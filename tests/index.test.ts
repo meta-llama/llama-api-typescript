@@ -327,14 +327,14 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['LLAMA_API_API_KEY'] = 'My API Key';
+    process.env['LLAMA_API_KEY'] = 'My API Key';
     const client = new LlamaAPI();
     expect(client.apiKey).toBe('My API Key');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
-    process.env['LLAMA_API_API_KEY'] = 'another My API Key';
+    process.env['LLAMA_API_KEY'] = 'another My API Key';
     const client = new LlamaAPI({ apiKey: 'My API Key' });
     expect(client.apiKey).toBe('My API Key');
   });

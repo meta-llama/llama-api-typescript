@@ -26,16 +26,16 @@ The full API of this library can be found in [api.md](api.md).
 import LlamaAPI from 'llama-api';
 
 const client = new LlamaAPI({
-  apiKey: process.env['LLAMA_API_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const chatCompletionResponse = await client.inference.chatCompletion({
+  const createChatCompletionResponse = await client.chat.completions.create({
     messages: [{ content: 'string', role: 'user' }],
-    model_id: 'model_id',
+    model: 'model',
   });
 
-  console.log(chatCompletionResponse.completion_message);
+  console.log(createChatCompletionResponse.completion_message);
 }
 
 main();
@@ -50,13 +50,13 @@ import LlamaAPI from 'llama-api';
 
 const client = new LlamaAPI();
 
-const stream = await client.inference.chatCompletion({
+const stream = await client.chat.completions.create({
   messages: [{ content: 'string', role: 'user' }],
-  model_id: 'model_id',
+  model: 'model',
   stream: true,
 });
-for await (const chatCompletionResponseStreamChunk of stream) {
-  console.log(chatCompletionResponseStreamChunk.completion_message);
+for await (const createChatCompletionResponseStreamChunk of stream) {
+  console.log(createChatCompletionResponseStreamChunk.completion_message);
 }
 ```
 
@@ -72,17 +72,16 @@ This library includes TypeScript definitions for all request params and response
 import LlamaAPI from 'llama-api';
 
 const client = new LlamaAPI({
-  apiKey: process.env['LLAMA_API_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const params: LlamaAPI.InferenceChatCompletionParams = {
+  const params: LlamaAPI.Chat.CompletionCreateParams = {
     messages: [{ content: 'string', role: 'user' }],
-    model_id: 'model_id',
+    model: 'model',
   };
-  const chatCompletionResponse: LlamaAPI.ChatCompletionResponse = await client.inference.chatCompletion(
-    params,
-  );
+  const createChatCompletionResponse: LlamaAPI.CreateChatCompletionResponse =
+    await client.chat.completions.create(params);
 }
 
 main();
@@ -99,8 +98,8 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const chatCompletionResponse = await client.inference
-    .chatCompletion({ messages: [{ content: 'string', role: 'user' }], model_id: 'model_id' })
+  const createChatCompletionResponse = await client.chat.completions
+    .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
     .catch(async (err) => {
       if (err instanceof LlamaAPI.APIError) {
         console.log(err.status); // 400
@@ -144,7 +143,7 @@ const client = new LlamaAPI({
 });
 
 // Or, configure per-request:
-await client.inference.chatCompletion({ messages: [{ content: 'string', role: 'user' }], model_id: 'model_id' }, {
+await client.chat.completions.create({ messages: [{ content: 'string', role: 'user' }], model: 'model' }, {
   maxRetries: 5,
 });
 ```
@@ -161,7 +160,7 @@ const client = new LlamaAPI({
 });
 
 // Override per-request:
-await client.inference.chatCompletion({ messages: [{ content: 'string', role: 'user' }], model_id: 'model_id' }, {
+await client.chat.completions.create({ messages: [{ content: 'string', role: 'user' }], model: 'model' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -184,17 +183,17 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new LlamaAPI();
 
-const response = await client.inference
-  .chatCompletion({ messages: [{ content: 'string', role: 'user' }], model_id: 'model_id' })
+const response = await client.chat.completions
+  .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: chatCompletionResponse, response: raw } = await client.inference
-  .chatCompletion({ messages: [{ content: 'string', role: 'user' }], model_id: 'model_id' })
+const { data: createChatCompletionResponse, response: raw } = await client.chat.completions
+  .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(chatCompletionResponse.completion_message);
+console.log(createChatCompletionResponse.completion_message);
 ```
 
 ### Logging

@@ -10,7 +10,7 @@ const client = new LlamaAPI({
 describe('resource models', () => {
   // skipped: tests are disabled for the time being
   test.skip('retrieve', async () => {
-    const responsePromise = client.models.retrieve('model_id');
+    const responsePromise = client.models.retrieve('Llama-3.3-70B-Instruct');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

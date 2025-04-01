@@ -7,12 +7,12 @@ const client = new LlamaAPI({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource inference', () => {
+describe('resource completions', () => {
   // skipped: tests are disabled for the time being
-  test.skip('chatCompletion: only required params', async () => {
-    const responsePromise = client.inference.chatCompletion({
+  test.skip('create: only required params', async () => {
+    const responsePromise = client.chat.completions.create({
       messages: [{ content: 'string', role: 'user' }],
-      model_id: 'model_id',
+      model: 'model',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -24,30 +24,24 @@ describe('resource inference', () => {
   });
 
   // skipped: tests are disabled for the time being
-  test.skip('chatCompletion: required and optional params', async () => {
-    const response = await client.inference.chatCompletion({
+  test.skip('create: required and optional params', async () => {
+    const response = await client.chat.completions.create({
       messages: [{ content: 'string', role: 'user' }],
-      model_id: 'model_id',
-      logprobs: { top_k: 0 },
-      max_completion_tokens: 0,
+      model: 'model',
+      max_completion_tokens: 256,
       repetition_penalty: 0,
-      response_format: { json_schema: {}, type: 'json_schema' },
+      response_format: { json_schema: { name: 'name', schema: {} }, type: 'json_schema' },
       stream: false,
-      temperature: 0,
-      tool_choice: 'auto',
-      tool_config: { system_message_behavior: 'append', tool_choice: 'auto', tool_prompt_format: 'json' },
-      tool_prompt_format: 'json',
+      temperature: 1,
+      tool_choice: 'none',
       tools: [
         {
-          tool_name: 'brave_search',
-          description: 'description',
-          parameters: {
-            foo: { param_type: 'param_type', default: true, description: 'description', required: true },
-          },
+          function: { name: 'name', description: 'description', parameters: { foo: 'bar' }, strict: true },
+          type: 'function',
         },
       ],
       top_k: 0,
-      top_p: 0,
+      top_p: 1,
     });
   });
 });

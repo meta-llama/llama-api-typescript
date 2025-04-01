@@ -20,28 +20,20 @@ import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
-import {
-  ChatCompletionRequest,
-  ChatCompletionResponse,
-  ChatCompletionResponseEvent,
-  ChatCompletionResponseStreamChunk,
-  ContentDelta,
-  ImageContentItem,
-  Inference,
-  InferenceChatCompletionParams,
-  InferenceChatCompletionParamsNonStreaming,
-  InferenceChatCompletionParamsStreaming,
-  ReasoningContentItem,
-  TextContentItem,
-} from './resources/inference';
 import { AIModel, ModelListResponse, Models } from './resources/models';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
+import {
+  Chat,
+  CreateChatCompletionRequest,
+  CreateChatCompletionResponse,
+  CreateChatCompletionResponseStreamChunk,
+} from './resources/chat/chat';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['LLAMA_API_API_KEY'].
+   * Defaults to process.env['LLAMA_API_KEY'].
    */
   apiKey?: string | null | undefined;
 
@@ -133,7 +125,7 @@ export class LlamaAPI {
   /**
    * API Client for interfacing with the Llama API API.
    *
-   * @param {string | null | undefined} [opts.apiKey=process.env['LLAMA_API_API_KEY'] ?? null]
+   * @param {string | null | undefined} [opts.apiKey=process.env['LLAMA_API_KEY'] ?? null]
    * @param {string} [opts.baseURL=process.env['LLAMA_API_BASE_URL'] ?? https://api.llama.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -144,7 +136,7 @@ export class LlamaAPI {
    */
   constructor({
     baseURL = readEnv('LLAMA_API_BASE_URL'),
-    apiKey = readEnv('LLAMA_API_API_KEY') ?? null,
+    apiKey = readEnv('LLAMA_API_KEY') ?? null,
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {
@@ -694,34 +686,20 @@ export class LlamaAPI {
 
   static toFile = Uploads.toFile;
 
-  inference: API.Inference = new API.Inference(this);
+  chat: API.Chat = new API.Chat(this);
   models: API.Models = new API.Models(this);
 }
-LlamaAPI.Inference = Inference;
+LlamaAPI.Chat = Chat;
 LlamaAPI.Models = Models;
 export declare namespace LlamaAPI {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
-    Inference as Inference,
-    type ChatCompletionRequest as ChatCompletionRequest,
-    type ChatCompletionResponse as ChatCompletionResponse,
-    type ChatCompletionResponseEvent as ChatCompletionResponseEvent,
-    type ChatCompletionResponseStreamChunk as ChatCompletionResponseStreamChunk,
-    type ContentDelta as ContentDelta,
-    type ImageContentItem as ImageContentItem,
-    type ReasoningContentItem as ReasoningContentItem,
-    type TextContentItem as TextContentItem,
-    type InferenceChatCompletionParams as InferenceChatCompletionParams,
-    type InferenceChatCompletionParamsNonStreaming as InferenceChatCompletionParamsNonStreaming,
-    type InferenceChatCompletionParamsStreaming as InferenceChatCompletionParamsStreaming,
+    Chat as Chat,
+    type CreateChatCompletionRequest as CreateChatCompletionRequest,
+    type CreateChatCompletionResponse as CreateChatCompletionResponse,
+    type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
   };
 
   export { Models as Models, type AIModel as AIModel, type ModelListResponse as ModelListResponse };
-
-  export type CompletionMessage = API.CompletionMessage;
-  export type Message = API.Message;
-  export type SystemMessage = API.SystemMessage;
-  export type ToolResponseMessage = API.ToolResponseMessage;
-  export type UserMessage = API.UserMessage;
 }

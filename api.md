@@ -1,29 +1,16 @@
-# Shared
+# Chat
 
 Types:
 
-- <code><a href="./src/resources/shared.ts">CompletionMessage</a></code>
-- <code><a href="./src/resources/shared.ts">Message</a></code>
-- <code><a href="./src/resources/shared.ts">SystemMessage</a></code>
-- <code><a href="./src/resources/shared.ts">ToolResponseMessage</a></code>
-- <code><a href="./src/resources/shared.ts">UserMessage</a></code>
+- <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionRequest</a></code>
+- <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionResponse</a></code>
+- <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionResponseStreamChunk</a></code>
 
-# Inference
-
-Types:
-
-- <code><a href="./src/resources/inference.ts">ChatCompletionRequest</a></code>
-- <code><a href="./src/resources/inference.ts">ChatCompletionResponse</a></code>
-- <code><a href="./src/resources/inference.ts">ChatCompletionResponseEvent</a></code>
-- <code><a href="./src/resources/inference.ts">ChatCompletionResponseStreamChunk</a></code>
-- <code><a href="./src/resources/inference.ts">ContentDelta</a></code>
-- <code><a href="./src/resources/inference.ts">ImageContentItem</a></code>
-- <code><a href="./src/resources/inference.ts">ReasoningContentItem</a></code>
-- <code><a href="./src/resources/inference.ts">TextContentItem</a></code>
+## Completions
 
 Methods:
 
-- <code title="post /v1/inference/chat-completion">client.inference.<a href="./src/resources/inference.ts">chatCompletion</a>({ ...params }) -> ChatCompletionResponse</code>
+- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CreateChatCompletionResponse</code>
 
 # Models
 
@@ -34,5 +21,5 @@ Types:
 
 Methods:
 
-- <code title="get /v1/models/{model_id}">client.models.<a href="./src/resources/models.ts">retrieve</a>(modelID) -> AIModel</code>
+- <code title="get /v1/models/{model}">client.models.<a href="./src/resources/models.ts">retrieve</a>(model) -> AIModel</code>
 - <code title="get /v1/models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelListResponse</code>

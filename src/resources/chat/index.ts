@@ -5,5 +5,10 @@ export {
   type CreateChatCompletionRequest,
   type CreateChatCompletionResponse,
   type CreateChatCompletionResponseStreamChunk,
-} from './chat/chat';
-export { Models, type AIModel, type ModelListResponse } from './models';
+} from './chat';
+export {
+  Completions,
+  type CompletionCreateParams,
+  type CompletionCreateParamsNonStreaming,
+  type CompletionCreateParamsStreaming,
+} from './completions';
