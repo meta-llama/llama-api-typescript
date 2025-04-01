@@ -15,7 +15,9 @@ export class Models extends APIResource {
    * one.
    */
   list(options?: RequestOptions): APIPromise<ModelListResponse> {
-    return this._client.get('/v1/models', options);
+    return (this._client.get('/v1/models', options) as APIPromise<{ data: ModelListResponse }>)._thenUnwrap(
+      (obj) => obj.data,
+    );
   }
 }
 
@@ -41,11 +43,7 @@ export interface AIModel {
   owned_by: string;
 }
 
-export interface ModelListResponse {
-  data: Array<AIModel>;
-
-  object?: 'list';
-}
+export type ModelListResponse = Array<AIModel>;
 
 export declare namespace Models {
   export { type AIModel as AIModel, type ModelListResponse as ModelListResponse };
