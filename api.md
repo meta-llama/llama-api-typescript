@@ -16,10 +16,10 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/models.ts">AIModel</a></code>
+- <code><a href="./src/resources/models.ts">LlamaModel</a></code>
 - <code><a href="./src/resources/models.ts">ModelListResponse</a></code>
 
 Methods:
 
-- <code title="get /v1/models/{model}">client.models.<a href="./src/resources/models.ts">retrieve</a>(model) -> AIModel</code>
+- <code title="get /v1/models/{model}">client.models.<a href="./src/resources/models.ts">retrieve</a>(model) -> LlamaModel</code>
 - <code title="get /v1/models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelListResponse</code>

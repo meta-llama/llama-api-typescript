@@ -6,7 +6,7 @@ import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
 export class Models extends APIResource {
-  retrieve(model: string, options?: RequestOptions): APIPromise<AIModel> {
+  retrieve(model: string, options?: RequestOptions): APIPromise<LlamaModel> {
     return this._client.get(path`/v1/models/${model}`, options);
   }
 
@@ -21,7 +21,7 @@ export class Models extends APIResource {
   }
 }
 
-export interface AIModel {
+export interface LlamaModel {
   /**
    * The unique model identifier, which can be referenced in the API.
    */
@@ -43,8 +43,8 @@ export interface AIModel {
   owned_by: string;
 }
 
-export type ModelListResponse = Array<AIModel>;
+export type ModelListResponse = Array<LlamaModel>;
 
 export declare namespace Models {
-  export { type AIModel as AIModel, type ModelListResponse as ModelListResponse };
+  export { type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };
 }

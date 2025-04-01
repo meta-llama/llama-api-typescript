@@ -6,4 +6,4 @@ export {
   type CreateChatCompletionResponse,
   type CreateChatCompletionResponseStreamChunk,
 } from './chat/chat';
-export { Models, type AIModel, type ModelListResponse } from './models';
+export { Models, type LlamaModel, type ModelListResponse } from './models';

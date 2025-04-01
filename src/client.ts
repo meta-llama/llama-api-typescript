@@ -20,7 +20,7 @@ import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
-import { AIModel, ModelListResponse, Models } from './resources/models';
+import { LlamaModel, ModelListResponse, Models } from './resources/models';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
@@ -701,5 +701,5 @@ export declare namespace LlamaAPI {
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
   };
 
-  export { Models as Models, type AIModel as AIModel, type ModelListResponse as ModelListResponse };
+  export { Models as Models, type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };
 }
