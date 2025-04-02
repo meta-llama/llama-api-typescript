@@ -5,5 +5,8 @@ export {
   type CreateChatCompletionRequest,
   type CreateChatCompletionResponse,
   type CreateChatCompletionResponseStreamChunk,
+  type MessageImageContentItem,
+  type MessageReasoningContentItem,
+  type MessageTextContentItem,
 } from './chat/chat';
 export { Models, type LlamaModel, type ModelListResponse } from './models';

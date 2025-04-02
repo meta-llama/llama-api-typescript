@@ -5,6 +5,9 @@ export {
   type CreateChatCompletionRequest,
   type CreateChatCompletionResponse,
   type CreateChatCompletionResponseStreamChunk,
+  type MessageImageContentItem,
+  type MessageReasoningContentItem,
+  type MessageTextContentItem,
 } from './chat';
 export {
   Completions,

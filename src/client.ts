@@ -29,6 +29,9 @@ import {
   CreateChatCompletionRequest,
   CreateChatCompletionResponse,
   CreateChatCompletionResponseStreamChunk,
+  MessageImageContentItem,
+  MessageReasoningContentItem,
+  MessageTextContentItem,
 } from './resources/chat/chat';
 
 export interface ClientOptions {
@@ -699,6 +702,9 @@ export declare namespace LlamaAPI {
     type CreateChatCompletionRequest as CreateChatCompletionRequest,
     type CreateChatCompletionResponse as CreateChatCompletionResponse,
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
+    type MessageImageContentItem as MessageImageContentItem,
+    type MessageReasoningContentItem as MessageReasoningContentItem,
+    type MessageTextContentItem as MessageTextContentItem,
   };
 
   export { Models as Models, type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };

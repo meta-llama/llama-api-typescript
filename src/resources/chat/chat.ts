@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
+import * as ChatAPI from './chat';
 import * as CompletionsAPI from './completions';
 import {
   CompletionCreateParams,
@@ -100,56 +101,12 @@ export namespace CreateChatCompletionRequest {
     /**
      * The content of the user message, which can include text and other media.
      */
-    content: string | Array<UserMessage.MessageTextContentItem | UserMessage.MessageImageContentItem>;
+    content: string | Array<ChatAPI.MessageTextContentItem | ChatAPI.MessageImageContentItem>;
 
     /**
      * Must be "user" to identify this as a user message.
      */
     role: 'user';
-  }
-
-  export namespace UserMessage {
-    /**
-     * A text content item
-     */
-    export interface MessageTextContentItem {
-      /**
-       * Text content
-       */
-      text: string;
-
-      /**
-       * Discriminator type of the content item. Always "text"
-       */
-      type: 'text';
-    }
-
-    /**
-     * A image content item
-     */
-    export interface MessageImageContentItem {
-      /**
-       * Contains either an image URL or a data URL for a base64 encoded image.
-       */
-      image_url: MessageImageContentItem.ImageURL;
-
-      /**
-       * Discriminator type of the content item. Always "image"
-       */
-      type: 'image';
-    }
-
-    export namespace MessageImageContentItem {
-      /**
-       * Contains either an image URL or a data URL for a base64 encoded image.
-       */
-      export interface ImageURL {
-        /**
-         * Either a URL of the image or the base64 encoded image data.
-         */
-        url: string;
-      }
-    }
   }
 
   /**
@@ -159,29 +116,12 @@ export namespace CreateChatCompletionRequest {
     /**
      * The content of the system message.
      */
-    content: string | Array<SystemMessage.ArrayOfContentItem>;
+    content: string | Array<ChatAPI.MessageTextContentItem>;
 
     /**
      * Must be "system" to identify this as a system message
      */
     role: 'system';
-  }
-
-  export namespace SystemMessage {
-    /**
-     * A text content item
-     */
-    export interface ArrayOfContentItem {
-      /**
-       * Text content
-       */
-      text: string;
-
-      /**
-       * Discriminator type of the content item. Always "text"
-       */
-      type: 'text';
-    }
   }
 
   /**
@@ -191,7 +131,7 @@ export namespace CreateChatCompletionRequest {
     /**
      * The content of the user message, which can include text and other media.
      */
-    content: string | Array<ToolResponseMessage.ArrayOfContentItem>;
+    content: string | Array<ChatAPI.MessageTextContentItem>;
 
     /**
      * Must be "tool" to identify this as a tool response
@@ -204,23 +144,6 @@ export namespace CreateChatCompletionRequest {
     tool_call_id: string;
   }
 
-  export namespace ToolResponseMessage {
-    /**
-     * A text content item
-     */
-    export interface ArrayOfContentItem {
-      /**
-       * Text content
-       */
-      text: string;
-
-      /**
-       * Discriminator type of the content item. Always "text"
-       */
-      type: 'text';
-    }
-  }
-
   /**
    * A message containing the model's (assistant) response in a chat conversation.
    */
@@ -228,7 +151,7 @@ export namespace CreateChatCompletionRequest {
     /**
      * The content of the model's response.
      */
-    content: string | AssistantMessage.MessageTextContentItem | AssistantMessage.MessageReasoningContentItem;
+    content: string | ChatAPI.MessageTextContentItem | ChatAPI.MessageReasoningContentItem;
 
     /**
      * Must be "assistant" to identify this as the model's response
@@ -250,41 +173,6 @@ export namespace CreateChatCompletionRequest {
   }
 
   export namespace AssistantMessage {
-    /**
-     * A text content item
-     */
-    export interface MessageTextContentItem {
-      /**
-       * Text content
-       */
-      text: string;
-
-      /**
-       * Discriminator type of the content item. Always "text"
-       */
-      type: 'text';
-    }
-
-    /**
-     * A reasoning content item
-     */
-    export interface MessageReasoningContentItem {
-      /**
-       * The final model response
-       */
-      answer: string;
-
-      /**
-       * The CoT reasoning content of the model
-       */
-      reasoning: string;
-
-      /**
-       * Discriminator type of the content item. Always "reasoning"
-       */
-      type: 'reasoning';
-    }
-
     export interface ToolCall {
       /**
        * The ID of the tool call.
@@ -444,10 +332,7 @@ export namespace CreateChatCompletionResponse {
     /**
      * The content of the model's response.
      */
-    content:
-      | string
-      | CompletionMessage.MessageTextContentItem
-      | CompletionMessage.MessageReasoningContentItem;
+    content: string | ChatAPI.MessageTextContentItem | ChatAPI.MessageReasoningContentItem;
 
     /**
      * Must be "assistant" to identify this as the model's response
@@ -469,41 +354,6 @@ export namespace CreateChatCompletionResponse {
   }
 
   export namespace CompletionMessage {
-    /**
-     * A text content item
-     */
-    export interface MessageTextContentItem {
-      /**
-       * Text content
-       */
-      text: string;
-
-      /**
-       * Discriminator type of the content item. Always "text"
-       */
-      type: 'text';
-    }
-
-    /**
-     * A reasoning content item
-     */
-    export interface MessageReasoningContentItem {
-      /**
-       * The final model response
-       */
-      answer: string;
-
-      /**
-       * The CoT reasoning content of the model
-       */
-      reasoning: string;
-
-      /**
-       * Discriminator type of the content item. Always "reasoning"
-       */
-      type: 'reasoning';
-    }
-
     export interface ToolCall {
       /**
        * The ID of the tool call.
@@ -636,6 +486,68 @@ export namespace CreateChatCompletionResponseStreamChunk {
   }
 }
 
+/**
+ * A image content item
+ */
+export interface MessageImageContentItem {
+  /**
+   * Contains either an image URL or a data URL for a base64 encoded image.
+   */
+  image_url: MessageImageContentItem.ImageURL;
+
+  /**
+   * Discriminator type of the content item. Always "image"
+   */
+  type: 'image';
+}
+
+export namespace MessageImageContentItem {
+  /**
+   * Contains either an image URL or a data URL for a base64 encoded image.
+   */
+  export interface ImageURL {
+    /**
+     * Either a URL of the image or the base64 encoded image data.
+     */
+    url: string;
+  }
+}
+
+/**
+ * A reasoning content item
+ */
+export interface MessageReasoningContentItem {
+  /**
+   * The final model response
+   */
+  answer: string;
+
+  /**
+   * The CoT reasoning content of the model
+   */
+  reasoning: string;
+
+  /**
+   * Discriminator type of the content item. Always "reasoning"
+   */
+  type: 'reasoning';
+}
+
+/**
+ * A text content item
+ */
+export interface MessageTextContentItem {
+  /**
+   * Text content
+   */
+  text: string;
+
+  /**
+   * Discriminator type of the content item. Always "text"
+   */
+  type: 'text';
+}
+
 Chat.Completions = Completions;
 
 export declare namespace Chat {
@@ -643,6 +555,9 @@ export declare namespace Chat {
     type CreateChatCompletionRequest as CreateChatCompletionRequest,
     type CreateChatCompletionResponse as CreateChatCompletionResponse,
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
+    type MessageImageContentItem as MessageImageContentItem,
+    type MessageReasoningContentItem as MessageReasoningContentItem,
+    type MessageTextContentItem as MessageTextContentItem,
   };
 
   export {
