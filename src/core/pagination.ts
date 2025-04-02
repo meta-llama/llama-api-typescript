@@ -106,21 +106,21 @@ export class PagePromise<
   }
 }
 
-export interface ModelsListPageResponse<Item> {
+export interface ModelsPageResponse<Item> {
   data: Array<Item>;
 }
 
-export interface ModelsListPageParams {
+export interface ModelsPageParams {
   limit?: number;
 }
 
-export class ModelsListPage<Item> extends AbstractPage<Item> implements ModelsListPageResponse<Item> {
+export class ModelsPage<Item> extends AbstractPage<Item> implements ModelsPageResponse<Item> {
   data: Array<Item>;
 
   constructor(
     client: LlamaAPI,
     response: Response,
-    body: ModelsListPageResponse<Item>,
+    body: ModelsPageResponse<Item>,
     options: FinalRequestOptions,
   ) {
     super(client, response, body, options);

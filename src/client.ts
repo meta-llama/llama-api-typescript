@@ -15,7 +15,7 @@ import * as Opts from './internal/request-options';
 import { VERSION } from './version';
 import * as Errors from './core/error';
 import * as Pagination from './core/pagination';
-import { AbstractPage, type ModelsListPageParams, ModelsListPageResponse } from './core/pagination';
+import { AbstractPage, type ModelsPageParams, ModelsPageResponse } from './core/pagination';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
@@ -715,11 +715,8 @@ LlamaAPI.Models = Models;
 export declare namespace LlamaAPI {
   export type RequestOptions = Opts.RequestOptions;
 
-  export import ModelsListPage = Pagination.ModelsListPage;
-  export {
-    type ModelsListPageParams as ModelsListPageParams,
-    type ModelsListPageResponse as ModelsListPageResponse,
-  };
+  export import ModelsPage = Pagination.ModelsPage;
+  export { type ModelsPageParams as ModelsPageParams, type ModelsPageResponse as ModelsPageResponse };
 
   export {
     Chat as Chat,
