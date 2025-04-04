@@ -1,4 +1,4 @@
-import { createPathTagFunction, encodeURIPath } from 'llama_api/internal/utils/path';
+import { createPathTagFunction, encodeURIPath } from 'llama-api/internal/utils/path';
 import { inspect } from 'node:util';
 
 describe('path template tag function', () => {

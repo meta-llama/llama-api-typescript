@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'llama_api/internal/uploads';
-import { toFile } from 'llama_api/core/uploads';
+import { multipartFormRequestOptions, createForm } from 'llama-api/internal/uploads';
+import { toFile } from 'llama-api/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

@@ -55,12 +55,12 @@ $ cd llama-api-typescript
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link llama_api
+$ yarn link llama-api
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global llama_api
+$ pnpm link -—global llama-api
 ```
 
 ## Running tests
