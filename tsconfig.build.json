@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "llama-api/*": ["dist/src/*"],
-      "llama-api": ["dist/src/index.ts"],
+      "llama_api/*": ["dist/src/*"],
+      "llama_api": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

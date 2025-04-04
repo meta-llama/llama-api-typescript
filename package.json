@@ -1,5 +1,5 @@
 {
-  "name": "llama-api",
+  "name": "llama_api",
   "version": "0.0.1-alpha.0",
   "description": "The official TypeScript library for the Llama API API",
   "author": "Llama API <dev-feedback@llama-api.com>",
@@ -50,8 +50,8 @@
     "synckit": "0.8.8"
   },
   "imports": {
-    "llama-api": ".",
-    "llama-api/*": "./src/*"
+    "llama_api": ".",
+    "llama_api/*": "./src/*"
   },
   "exports": {
     ".": {

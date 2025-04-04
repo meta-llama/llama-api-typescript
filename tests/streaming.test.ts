@@ -1,6 +1,6 @@
 import assert from 'assert';
-import { _iterSSEMessages } from 'llama-api/core/streaming';
-import { ReadableStreamFrom } from 'llama-api/internal/shims';
+import { _iterSSEMessages } from 'llama_api/core/streaming';
+import { ReadableStreamFrom } from 'llama_api/internal/shims';
 
 describe('streaming decoding', () => {
   test('basic', async () => {
