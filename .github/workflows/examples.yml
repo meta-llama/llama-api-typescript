@@ -1,0 +1,39 @@
+name: Run Examples
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering
+  schedule:
+    - cron: '0 * * * *' # every hour
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Install dependencies
+      run: |
+        yarn install
+    
+    # TODO(xiyan): remove this once made public
+    - name: Install dependencies
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+      run: |
+        git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+        yarn install
+
+    - name: Run Scripts
+      env:
+        LLAMA_API_KEY: ${{ secrets.LLAMA_API_KEY }}
+      run: |
+        yarn tsn -T examples/chat.ts
