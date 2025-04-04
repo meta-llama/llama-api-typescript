@@ -26,12 +26,16 @@ import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 import {
   Chat,
+  CompletionMessage,
   CreateChatCompletionRequest,
   CreateChatCompletionResponse,
   CreateChatCompletionResponseStreamChunk,
   MessageImageContentItem,
   MessageReasoningContentItem,
   MessageTextContentItem,
+  SystemMessage,
+  ToolResponseMessage,
+  UserMessage,
 } from './resources/chat/chat';
 
 export interface ClientOptions {
@@ -699,12 +703,16 @@ export declare namespace LlamaAPI {
 
   export {
     Chat as Chat,
+    type CompletionMessage as CompletionMessage,
     type CreateChatCompletionRequest as CreateChatCompletionRequest,
     type CreateChatCompletionResponse as CreateChatCompletionResponse,
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
     type MessageImageContentItem as MessageImageContentItem,
     type MessageReasoningContentItem as MessageReasoningContentItem,
     type MessageTextContentItem as MessageTextContentItem,
+    type SystemMessage as SystemMessage,
+    type ToolResponseMessage as ToolResponseMessage,
+    type UserMessage as UserMessage,
   };
 
   export { Models as Models, type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };
