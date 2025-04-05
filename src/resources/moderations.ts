@@ -17,7 +17,15 @@ export class Moderations extends APIResource {
 export interface ModerationCreateResponse {
   model: string;
 
-  results: Array<unknown>;
+  results: Array<ModerationCreateResponse.Result>;
+}
+
+export namespace ModerationCreateResponse {
+  export interface Result {
+    flagged: boolean;
+
+    flagged_categories: Array<string>;
+  }
 }
 
 export interface ModerationCreateParams {
