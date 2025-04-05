@@ -36,7 +36,7 @@ export class Completions extends APIResource {
         ...options,
         headers: {
           ...options?.headers,
-          Accept: 'text/event-stream',
+          'Accept': 'text/event-stream',
         },
       };
     }
@@ -52,9 +52,7 @@ export interface CompletionCreateParamsBase {
   /**
    * List of messages in the conversation.
    */
-  messages: Array<
-    ChatAPI.UserMessage | ChatAPI.SystemMessage | ChatAPI.ToolResponseMessage | ChatAPI.CompletionMessage
-  >;
+  messages: Array<ChatAPI.Message>;
 
   /**
    * The identifier of the model to use.
