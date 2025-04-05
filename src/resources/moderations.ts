@@ -14,19 +14,10 @@ export class Moderations extends APIResource {
   }
 }
 
-/**
- * Response from a moderation request.
- */
-export type ModerationCreateResponse = Array<ModerationCreateResponse.ModerationCreateResponseItem>;
+export interface ModerationCreateResponse {
+  model: string;
 
-export namespace ModerationCreateResponse {
-  export interface ModerationCreateResponseItem {
-    flagged: boolean;
-
-    flagged_categories: Array<string>;
-
-    model: string;
-  }
+  results: Array<unknown>;
 }
 
 export interface ModerationCreateParams {
