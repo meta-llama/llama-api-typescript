@@ -79,7 +79,7 @@ export interface CreateChatCompletionRequest {
   /**
    * List of messages in the conversation.
    */
-  messages: Array<UserMessage | SystemMessage | ToolResponseMessage | CompletionMessage>;
+  messages: Array<Message>;
 
   /**
    * The identifier of the model to use.
@@ -369,6 +369,11 @@ export namespace CreateChatCompletionResponseStreamChunk {
 }
 
 /**
+ * A message from the user in a chat conversation.
+ */
+export type Message = UserMessage | SystemMessage | ToolResponseMessage | CompletionMessage;
+
+/**
  * A image content item
  */
 export interface MessageImageContentItem {
@@ -488,6 +493,7 @@ export declare namespace Chat {
     type CreateChatCompletionRequest as CreateChatCompletionRequest,
     type CreateChatCompletionResponse as CreateChatCompletionResponse,
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
+    type Message as Message,
     type MessageImageContentItem as MessageImageContentItem,
     type MessageReasoningContentItem as MessageReasoningContentItem,
     type MessageTextContentItem as MessageTextContentItem,
