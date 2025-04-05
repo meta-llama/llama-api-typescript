@@ -21,22 +21,18 @@ import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import { LlamaModel, ModelListResponse, Models } from './resources/models';
+import { Moderations } from './resources/moderations';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 import {
   Chat,
-  CompletionMessage,
   CreateChatCompletionRequest,
   CreateChatCompletionResponse,
   CreateChatCompletionResponseStreamChunk,
-  Message,
   MessageImageContentItem,
   MessageReasoningContentItem,
   MessageTextContentItem,
-  SystemMessage,
-  ToolResponseMessage,
-  UserMessage,
 } from './resources/chat/chat';
 
 export interface ClientOptions {
@@ -696,26 +692,31 @@ export class LlamaAPI {
 
   chat: API.Chat = new API.Chat(this);
   models: API.Models = new API.Models(this);
+  moderations: API.Moderations = new API.Moderations(this);
 }
 LlamaAPI.Chat = Chat;
 LlamaAPI.Models = Models;
+LlamaAPI.Moderations = Moderations;
 export declare namespace LlamaAPI {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
     Chat as Chat,
-    type CompletionMessage as CompletionMessage,
     type CreateChatCompletionRequest as CreateChatCompletionRequest,
     type CreateChatCompletionResponse as CreateChatCompletionResponse,
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
-    type Message as Message,
     type MessageImageContentItem as MessageImageContentItem,
     type MessageReasoningContentItem as MessageReasoningContentItem,
     type MessageTextContentItem as MessageTextContentItem,
-    type SystemMessage as SystemMessage,
-    type ToolResponseMessage as ToolResponseMessage,
-    type UserMessage as UserMessage,
   };
 
   export { Models as Models, type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };
+
+  export { Moderations as Moderations };
+
+  export type CompletionMessage = API.CompletionMessage;
+  export type Message = API.Message;
+  export type SystemMessage = API.SystemMessage;
+  export type ToolResponseMessage = API.ToolResponseMessage;
+  export type UserMessage = API.UserMessage;
 }

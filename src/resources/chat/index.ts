@@ -2,17 +2,12 @@
 
 export {
   Chat,
-  type CompletionMessage,
   type CreateChatCompletionRequest,
   type CreateChatCompletionResponse,
   type CreateChatCompletionResponseStreamChunk,
-  type Message,
   type MessageImageContentItem,
   type MessageReasoningContentItem,
   type MessageTextContentItem,
-  type SystemMessage,
-  type ToolResponseMessage,
-  type UserMessage,
 } from './chat';
 export {
   Completions,

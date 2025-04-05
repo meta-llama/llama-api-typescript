@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import * as CompletionsAPI from './completions';
+import * as Shared from '../shared';
 import * as ChatAPI from './chat';
 import { APIPromise } from '../../core/api-promise';
 import { Stream } from '../../core/streaming';
@@ -43,7 +44,7 @@ export interface CompletionCreateParamsBase {
   /**
    * List of messages in the conversation.
    */
-  messages: Array<ChatAPI.Message>;
+  messages: Array<Shared.Message>;
 
   /**
    * The identifier of the model to use.

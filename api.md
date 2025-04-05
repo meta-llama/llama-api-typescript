@@ -1,18 +1,23 @@
+# Shared
+
+Types:
+
+- <code><a href="./src/resources/shared.ts">CompletionMessage</a></code>
+- <code><a href="./src/resources/shared.ts">Message</a></code>
+- <code><a href="./src/resources/shared.ts">SystemMessage</a></code>
+- <code><a href="./src/resources/shared.ts">ToolResponseMessage</a></code>
+- <code><a href="./src/resources/shared.ts">UserMessage</a></code>
+
 # Chat
 
 Types:
 
-- <code><a href="./src/resources/chat/chat.ts">CompletionMessage</a></code>
 - <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionRequest</a></code>
 - <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionResponse</a></code>
 - <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionResponseStreamChunk</a></code>
-- <code><a href="./src/resources/chat/chat.ts">Message</a></code>
 - <code><a href="./src/resources/chat/chat.ts">MessageImageContentItem</a></code>
 - <code><a href="./src/resources/chat/chat.ts">MessageReasoningContentItem</a></code>
 - <code><a href="./src/resources/chat/chat.ts">MessageTextContentItem</a></code>
-- <code><a href="./src/resources/chat/chat.ts">SystemMessage</a></code>
-- <code><a href="./src/resources/chat/chat.ts">ToolResponseMessage</a></code>
-- <code><a href="./src/resources/chat/chat.ts">UserMessage</a></code>
 
 ## Completions
 
@@ -31,3 +36,5 @@ Methods:
 
 - <code title="get /v1/models/{model}">client.models.<a href="./src/resources/models.ts">retrieve</a>(model) -> LlamaModel</code>
 - <code title="get /v1/models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelListResponse</code>
+
+# Moderations
