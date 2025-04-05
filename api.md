@@ -38,3 +38,11 @@ Methods:
 - <code title="get /v1/models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelListResponse</code>
 
 # Moderations
+
+Types:
+
+- <code><a href="./src/resources/moderations.ts">ModerationCreateResponse</a></code>
+
+Methods:
+
+- <code title="post /v1/moderations">client.moderations.<a href="./src/resources/moderations.ts">create</a>({ ...params }) -> ModerationCreateResponse</code>

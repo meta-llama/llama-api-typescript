@@ -11,4 +11,4 @@ export {
   type MessageTextContentItem,
 } from './chat/chat';
 export { Models, type LlamaModel, type ModelListResponse } from './models';
-export { Moderations } from './moderations';
+export { Moderations, type ModerationCreateResponse, type ModerationCreateParams } from './moderations';
