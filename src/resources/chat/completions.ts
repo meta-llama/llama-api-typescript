@@ -43,9 +43,7 @@ export interface CompletionCreateParamsBase {
   /**
    * List of messages in the conversation.
    */
-  messages: Array<
-    ChatAPI.UserMessage | ChatAPI.SystemMessage | ChatAPI.ToolResponseMessage | ChatAPI.CompletionMessage
-  >;
+  messages: Array<ChatAPI.Message>;
 
   /**
    * The identifier of the model to use.

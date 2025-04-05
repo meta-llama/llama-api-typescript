@@ -6,6 +6,7 @@ export {
   type CreateChatCompletionRequest,
   type CreateChatCompletionResponse,
   type CreateChatCompletionResponseStreamChunk,
+  type Message,
   type MessageImageContentItem,
   type MessageReasoningContentItem,
   type MessageTextContentItem,
