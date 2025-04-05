@@ -32,8 +32,14 @@ jobs:
         git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
         yarn install
 
-    - name: Run Scripts
+    - name: Run chat.ts
       env:
         LLAMA_API_KEY: ${{ secrets.LLAMA_API_KEY }}
       run: |
         yarn tsn -T examples/chat.ts
+    
+    - name: Run structured.ts
+      env:
+        LLAMA_API_KEY: ${{ secrets.LLAMA_API_KEY }}
+      run: |
+        yarn tsn -T examples/structured.ts
