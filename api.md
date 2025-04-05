@@ -36,11 +36,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/moderations.ts">CompletionMessage</a></code>
-- <code><a href="./src/resources/moderations.ts">Message</a></code>
-- <code><a href="./src/resources/moderations.ts">SystemMessage</a></code>
-- <code><a href="./src/resources/moderations.ts">ToolResponseMessage</a></code>
-- <code><a href="./src/resources/moderations.ts">UserMessage</a></code>
 - <code><a href="./src/resources/moderations.ts">ModerationCreateResponse</a></code>
 
 Methods:

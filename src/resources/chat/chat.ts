@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../core/resource';
-import * as ModerationsAPI from '../moderations';
 import * as CompletionsAPI from './completions';
 import {
   CompletionCreateParams,
@@ -80,7 +79,7 @@ export interface CreateChatCompletionRequest {
   /**
    * List of messages in the conversation.
    */
-  messages: Array<ModerationsAPI.Message>;
+  messages: Array<Message>;
 
   /**
    * The identifier of the model to use.
@@ -264,7 +263,7 @@ export interface CreateChatCompletionResponse {
   /**
    * The complete response message
    */
-  completion_message: ModerationsAPI.CompletionMessage;
+  completion_message: CompletionMessage;
 
   metrics?: Array<CreateChatCompletionResponse.Metric>;
 }
@@ -372,11 +371,7 @@ export namespace CreateChatCompletionResponseStreamChunk {
 /**
  * A message from the user in a chat conversation.
  */
-export type Message =
-  | ModerationsAPI.UserMessage
-  | ModerationsAPI.SystemMessage
-  | ModerationsAPI.ToolResponseMessage
-  | ModerationsAPI.CompletionMessage;
+export type Message = UserMessage | SystemMessage | ToolResponseMessage | CompletionMessage;
 
 /**
  * A image content item

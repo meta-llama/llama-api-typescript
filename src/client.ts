@@ -21,32 +21,23 @@ import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import { LlamaModel, ModelListResponse, Models } from './resources/models';
-import {
-  CompletionMessage,
-  Message,
-  ModerationCreateParams,
-  ModerationCreateResponse,
-  Moderations,
-  SystemMessage,
-  ToolResponseMessage,
-  UserMessage,
-} from './resources/moderations';
+import { ModerationCreateParams, ModerationCreateResponse, Moderations } from './resources/moderations';
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 import {
   Chat,
-  CompletionMessage as ChatAPICompletionMessage,
+  CompletionMessage,
   CreateChatCompletionRequest,
   CreateChatCompletionResponse,
   CreateChatCompletionResponseStreamChunk,
-  Message as ChatAPIMessage,
+  Message,
   MessageImageContentItem,
   MessageReasoningContentItem,
   MessageTextContentItem,
-  SystemMessage as ChatAPISystemMessage,
-  ToolResponseMessage as ChatAPIToolResponseMessage,
-  UserMessage as ChatAPIUserMessage,
+  SystemMessage,
+  ToolResponseMessage,
+  UserMessage,
 } from './resources/chat/chat';
 
 export interface ClientOptions {
@@ -716,28 +707,23 @@ export declare namespace LlamaAPI {
 
   export {
     Chat as Chat,
-    type ChatAPICompletionMessage as CompletionMessage,
+    type CompletionMessage as CompletionMessage,
     type CreateChatCompletionRequest as CreateChatCompletionRequest,
     type CreateChatCompletionResponse as CreateChatCompletionResponse,
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
-    type ChatAPIMessage as Message,
+    type Message as Message,
     type MessageImageContentItem as MessageImageContentItem,
     type MessageReasoningContentItem as MessageReasoningContentItem,
     type MessageTextContentItem as MessageTextContentItem,
-    type ChatAPISystemMessage as SystemMessage,
-    type ChatAPIToolResponseMessage as ToolResponseMessage,
-    type ChatAPIUserMessage as UserMessage,
+    type SystemMessage as SystemMessage,
+    type ToolResponseMessage as ToolResponseMessage,
+    type UserMessage as UserMessage,
   };
 
   export { Models as Models, type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };
 
   export {
     Moderations as Moderations,
-    type CompletionMessage as CompletionMessage,
-    type Message as Message,
-    type SystemMessage as SystemMessage,
-    type ToolResponseMessage as ToolResponseMessage,
-    type UserMessage as UserMessage,
     type ModerationCreateResponse as ModerationCreateResponse,
     type ModerationCreateParams as ModerationCreateParams,
   };

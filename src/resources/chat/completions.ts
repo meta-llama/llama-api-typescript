@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../core/resource';
 import * as CompletionsAPI from './completions';
-import * as ModerationsAPI from '../moderations';
 import * as ChatAPI from './chat';
 import { APIPromise } from '../../core/api-promise';
 import { Stream } from '../../core/streaming';
@@ -44,7 +43,7 @@ export interface CompletionCreateParamsBase {
   /**
    * List of messages in the conversation.
    */
-  messages: Array<ModerationsAPI.Message>;
+  messages: Array<ChatAPI.Message>;
 
   /**
    * The identifier of the model to use.

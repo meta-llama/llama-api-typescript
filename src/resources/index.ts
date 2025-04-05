@@ -15,13 +15,4 @@ export {
   type UserMessage,
 } from './chat/chat';
 export { Models, type LlamaModel, type ModelListResponse } from './models';
-export {
-  Moderations,
-  type CompletionMessage,
-  type Message,
-  type SystemMessage,
-  type ToolResponseMessage,
-  type UserMessage,
-  type ModerationCreateResponse,
-  type ModerationCreateParams,
-} from './moderations';
+export { Moderations, type ModerationCreateResponse, type ModerationCreateParams } from './moderations';
