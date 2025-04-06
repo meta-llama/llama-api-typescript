@@ -385,7 +385,7 @@ export interface MessageImageContentItem {
   /**
    * Discriminator type of the content item. Always "image"
    */
-  type: 'image';
+  type: 'image_url';
 }
 
 export namespace MessageImageContentItem {
