@@ -27,7 +27,7 @@ async function run(stream: boolean = false) {
 
   if (stream) {
     const response = await client.chat.completions.create({
-      model: 'Llama-3.3-70B-Instruct',
+      model: 'Llama-4-Maverick-17B-128E-Instruct-FP8',
       messages: [
         {
           role: 'system',
@@ -64,7 +64,7 @@ async function run(stream: boolean = false) {
     console.log(address);
   } else {
     const response = await client.chat.completions.create({
-      model: 'Llama-3.3-70B-Instruct',
+      model: 'Llama-4-Maverick-17B-128E-Instruct-FP8',
       messages: [
         {
           role: 'system',

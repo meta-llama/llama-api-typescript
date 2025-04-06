@@ -69,3 +69,23 @@ jobs:
         LLAMA_API_KEY: ${{ secrets.LLAMA_API_KEY }}
       run: |
         yarn tsn -T examples/tool_call.ts
+  
+  vision:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Install dependencies
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+      run: |
+        git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+        yarn install
+    - name: Run vision.ts
+      env:
+        LLAMA_API_KEY: ${{ secrets.LLAMA_API_KEY }}
+      run: |
+        yarn tsn -T examples/vision.ts

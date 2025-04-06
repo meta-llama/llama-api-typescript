@@ -1,22 +1,32 @@
 #!/usr/bin/env -S npm run tsn -T
 
 import LlamaAPI from 'llama-api';
+import { Message } from 'llama-api/resources/chat';
 
 // gets API Key from environment variable LLAMA_API_KEY
 const llamaapi = new LlamaAPI();
 
 async function main() {
+  const messages: Message[] = [
+    { role: 'user', 
+        content: [
+            { type: 'text', text: 'What is the difference between the two images?' },
+            { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png' } },
+            { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png' } },
+        ]
+    }
+  ]
   // Non-streaming:
   const completion = await llamaapi.chat.completions.create({
     model: 'Llama-4-Maverick-17B-128E-Instruct-FP8',
-    messages: [{ role: 'user', content: 'Hello, how are you?' }],
+    messages: messages,
   });
   console.log(completion);
 
   // Streaming:
   const stream = await llamaapi.chat.completions.create({
     model: 'Llama-4-Maverick-17B-128E-Instruct-FP8',
-    messages: [{ role: 'user', content: 'Hello, how are you?' }],
+    messages: messages,
     stream: true,
   });
   for await (const chunk of stream) {
