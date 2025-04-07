@@ -8,14 +8,23 @@ const llamaapi = new LlamaAPI();
 
 async function main() {
   const messages: Message[] = [
-    { role: 'user', 
-        content: [
-            { type: 'text', text: 'What is the difference between the two images?' },
-            { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png' } },
-            { type: 'image_url', image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png' } },
-        ]
-    }
-  ]
+    {
+      role: 'user',
+      content: [
+        { type: 'text', text: 'What is the difference between the two images?' },
+        {
+          type: 'image_url',
+          image_url: { url: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png' },
+        },
+        {
+          type: 'image_url',
+          image_url: {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png',
+          },
+        },
+      ],
+    },
+  ];
   // Non-streaming:
   const completion = await llamaapi.chat.completions.create({
     model: 'Llama-4-Maverick-17B-128E-Instruct-FP8',
