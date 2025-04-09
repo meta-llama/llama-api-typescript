@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { LlamaAPI as default } from './client';
+export { LlamaAPIClient as default } from './client';
 
 export { type Uploadable, toFile } from './core/uploads';
 export { APIPromise } from './core/api-promise';
-export { LlamaAPI, type ClientOptions } from './client';
+export { LlamaAPIClient, type ClientOptions } from './client';
 export {
-  LlamaAPIError,
+  LlamaAPIClientError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,

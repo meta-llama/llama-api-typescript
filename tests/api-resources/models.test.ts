@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   apiKey: 'My API Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });

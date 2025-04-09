@@ -1,8 +1,8 @@
 {
-  "name": "llama-api",
+  "name": "llama-api-client",
   "version": "0.0.1-alpha.0",
-  "description": "The official TypeScript library for the Llama API API",
-  "author": "Llama API <dev-feedback@llama-api.com>",
+  "description": "The official TypeScript library for the Llama API Client API",
+  "author": "Llama API Client <dev-feedback@llama-api.com>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -50,8 +50,8 @@
     "synckit": "0.8.8"
   },
   "imports": {
-    "llama-api": ".",
-    "llama-api/*": "./src/*"
+    "llama-api-client": ".",
+    "llama-api-client/*": "./src/*"
   },
   "exports": {
     ".": {
