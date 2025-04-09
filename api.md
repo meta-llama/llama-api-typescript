@@ -8,7 +8,6 @@ Types:
 - <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionResponseStreamChunk</a></code>
 - <code><a href="./src/resources/chat/chat.ts">Message</a></code>
 - <code><a href="./src/resources/chat/chat.ts">MessageImageContentItem</a></code>
-- <code><a href="./src/resources/chat/chat.ts">MessageReasoningContentItem</a></code>
 - <code><a href="./src/resources/chat/chat.ts">MessageTextContentItem</a></code>
 - <code><a href="./src/resources/chat/chat.ts">SystemMessage</a></code>
 - <code><a href="./src/resources/chat/chat.ts">ToolResponseMessage</a></code>
