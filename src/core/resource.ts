@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { LlamaAPI } from '../client';
+import type { LlamaAPIClient } from '../client';
 
 export class APIResource {
-  protected _client: LlamaAPI;
+  protected _client: LlamaAPIClient;
 
-  constructor(client: LlamaAPI) {
+  constructor(client: LlamaAPIClient) {
     this._client = client;
   }
 }

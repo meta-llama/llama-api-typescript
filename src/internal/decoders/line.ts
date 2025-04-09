@@ -1,4 +1,4 @@
-import { LlamaAPIError } from '../../core/error';
+import { LlamaAPIClientError } from '../../core/error';
 
 export type Bytes = string | ArrayBuffer | Uint8Array | null | undefined;
 
@@ -87,7 +87,7 @@ export class LineDecoder {
         return (globalThis as any).Buffer.from(bytes).toString();
       }
 
-      throw new LlamaAPIError(
+      throw new LlamaAPIClientError(
         `Unexpected: received non-Uint8Array (${bytes.constructor.name}) stream chunk in an environment with a global "Buffer" defined, which this library assumes to be Node. Please report this error.`,
       );
     }
@@ -99,14 +99,14 @@ export class LineDecoder {
         return this.textDecoder!.decode(bytes);
       }
 
-      throw new LlamaAPIError(
+      throw new LlamaAPIClientError(
         `Unexpected: received non-Uint8Array/ArrayBuffer (${
           (bytes as any).constructor.name
         }) in a web platform. Please report this error.`,
       );
     }
 
-    throw new LlamaAPIError(
+    throw new LlamaAPIClientError(
       `Unexpected: neither Buffer nor TextDecoder are available as globals. Please report this error.`,
     );
   }

@@ -1,4 +1,4 @@
-import { LlamaAPIError } from './error';
+import { LlamaAPIClientError } from './error';
 import { type ReadableStream } from '../internal/shim-types';
 import { makeReadableStream } from '../internal/shims';
 import { findDoubleNewlineIndex, LineDecoder } from '../internal/decoders/line';
@@ -28,7 +28,9 @@ export class Stream<Item> implements AsyncIterable<Item> {
 
     async function* iterator(): AsyncIterator<Item, any, undefined> {
       if (consumed) {
-        throw new LlamaAPIError('Cannot iterate over a consumed stream, use `.tee()` to split the stream.');
+        throw new LlamaAPIClientError(
+          'Cannot iterate over a consumed stream, use `.tee()` to split the stream.',
+        );
       }
       consumed = true;
       let done = false;
@@ -80,7 +82,9 @@ export class Stream<Item> implements AsyncIterable<Item> {
 
     async function* iterator(): AsyncIterator<Item, any, undefined> {
       if (consumed) {
-        throw new LlamaAPIError('Cannot iterate over a consumed stream, use `.tee()` to split the stream.');
+        throw new LlamaAPIClientError(
+          'Cannot iterate over a consumed stream, use `.tee()` to split the stream.',
+        );
       }
       consumed = true;
       let done = false;
@@ -180,11 +184,11 @@ export async function* _iterSSEMessages(
       typeof (globalThis as any).navigator !== 'undefined' &&
       (globalThis as any).navigator.product === 'ReactNative'
     ) {
-      throw new LlamaAPIError(
+      throw new LlamaAPIClientError(
         `The default react-native fetch implementation does not support streaming. Please use expo/fetch: https://docs.expo.dev/versions/latest/sdk/expo/#expofetch-api`,
       );
     }
-    throw new LlamaAPIError(`Attempted to iterate over a response with no body`);
+    throw new LlamaAPIClientError(`Attempted to iterate over a response with no body`);
   }
 
   const sseDecoder = new SSEDecoder();

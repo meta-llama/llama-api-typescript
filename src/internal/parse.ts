@@ -2,7 +2,7 @@
 
 import type { FinalRequestOptions } from './request-options';
 import { Stream } from '../core/streaming';
-import { type LlamaAPI } from '../client';
+import { type LlamaAPIClient } from '../client';
 import { formatRequestDetails, loggerFor } from './utils/log';
 
 export type APIResponseProps = {
@@ -14,7 +14,7 @@ export type APIResponseProps = {
   startTime: number;
 };
 
-export async function defaultParseResponse<T>(client: LlamaAPI, props: APIResponseProps): Promise<T> {
+export async function defaultParseResponse<T>(client: LlamaAPIClient, props: APIResponseProps): Promise<T> {
   const { response, requestLogID, retryOfRequestLogID, startTime } = props;
   const body = await (async () => {
     if (props.options.stream) {

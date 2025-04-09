@@ -20,7 +20,7 @@ export interface CompletionMessage {
   /**
    * The content of the model's response.
    */
-  content: string | MessageTextContentItem | MessageReasoningContentItem;
+  content: string | MessageTextContentItem;
 
   /**
    * Must be "assistant" to identify this as the model's response
@@ -299,7 +299,7 @@ export namespace CreateChatCompletionResponseStreamChunk {
      * Content generated since last event. This can be one or more tokens, or a tool
      * call.
      */
-    delta: Event.TextDelta | Event.ToolCallDelta | Event.ReasoningDelta;
+    delta: Event.TextDelta | Event.ToolCallDelta;
 
     /**
      * Type of the event
@@ -349,14 +349,6 @@ export namespace CreateChatCompletionResponseStreamChunk {
         name?: string;
       }
     }
-
-    export interface ReasoningDelta {
-      answer: string;
-
-      reasoning: string;
-
-      type: 'reasoning';
-    }
   }
 
   export interface Metric {
@@ -398,26 +390,6 @@ export namespace MessageImageContentItem {
      */
     url: string;
   }
-}
-
-/**
- * A reasoning content item
- */
-export interface MessageReasoningContentItem {
-  /**
-   * The final model response
-   */
-  answer: string;
-
-  /**
-   * The CoT reasoning content of the model
-   */
-  reasoning: string;
-
-  /**
-   * Discriminator type of the content item. Always "reasoning"
-   */
-  type: 'reasoning';
 }
 
 /**
@@ -495,7 +467,6 @@ export declare namespace Chat {
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
     type Message as Message,
     type MessageImageContentItem as MessageImageContentItem,
-    type MessageReasoningContentItem as MessageReasoningContentItem,
     type MessageTextContentItem as MessageTextContentItem,
     type SystemMessage as SystemMessage,
     type ToolResponseMessage as ToolResponseMessage,

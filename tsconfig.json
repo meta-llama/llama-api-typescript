@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "llama-api/*": ["src/*"],
-      "llama-api": ["src/index.ts"]
+      "llama-api-client/*": ["src/*"],
+      "llama-api-client": ["src/index.ts"]
     },
     "noEmit": true,
 
