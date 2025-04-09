@@ -25,7 +25,7 @@ export default tseslint.config(
         {
           patterns: [
             {
-              regex: '^llama-api(/.*)?',
+              regex: '^llama-api-client(/.*)?',
               message: 'Use a relative import, not a package import.',
             },
           ],

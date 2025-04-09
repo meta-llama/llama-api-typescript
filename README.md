@@ -1,8 +1,8 @@
-# Llama API TypeScript API Library
+# Llama API Client TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/llama-api.svg)](https://npmjs.org/package/llama-api) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/llama-api)
+[![NPM version](https://img.shields.io/npm/v/llama-api-client.svg)](https://npmjs.org/package/llama-api-client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/llama-api-client)
 
-This library provides convenient access to the Llama API REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Llama API Client REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found on [docs.llama-api.com](https://docs.llama-api.com). The full API of this library can be found in [api.md](api.md).
 
@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:meta-llama/llama-api-typescript.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install llama-api`
+> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install llama-api-client`
 
 ## Usage
 
@@ -23,9 +23,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
@@ -46,9 +46,9 @@ main();
 We provide support for streaming responses using Server Sent Events (SSE).
 
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 
-const client = new LlamaAPI();
+const client = new LlamaAPIClient();
 
 const stream = await client.chat.completions.create({
   messages: [{ content: 'string', role: 'user' }],
@@ -69,18 +69,18 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const params: LlamaAPI.Chat.CompletionCreateParams = {
+  const params: LlamaAPIClient.Chat.CompletionCreateParams = {
     messages: [{ content: 'string', role: 'user' }],
     model: 'model',
   };
-  const createChatCompletionResponse: LlamaAPI.CreateChatCompletionResponse =
+  const createChatCompletionResponse: LlamaAPIClient.CreateChatCompletionResponse =
     await client.chat.completions.create(params);
 }
 
@@ -101,7 +101,7 @@ async function main() {
   const createChatCompletionResponse = await client.chat.completions
     .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
     .catch(async (err) => {
-      if (err instanceof LlamaAPI.APIError) {
+      if (err instanceof LlamaAPIClient.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.headers); // {server: 'nginx', ...}
@@ -138,7 +138,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   maxRetries: 0, // default is 2
 });
 
@@ -155,7 +155,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -181,7 +181,7 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 
 <!-- prettier-ignore -->
 ```ts
-const client = new LlamaAPI();
+const client = new LlamaAPIClient();
 
 const response = await client.chat.completions
   .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
@@ -206,13 +206,13 @@ console.log(createChatCompletionResponse.completion_message);
 
 The log level can be configured in two ways:
 
-1. Via the `LLAMA_API_LOG` environment variable
+1. Via the `LLAMA_API_CLIENT_LOG` environment variable
 2. Using the `logLevel` client option (overrides the environment variable if set)
 
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   logLevel: 'debug', // Show all log messages
 });
 ```
@@ -238,13 +238,13 @@ When providing a custom logger, the `logLevel` option still controls which messa
 below the configured level will not be sent to your logger.
 
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 import pino from 'pino';
 
 const logger = pino();
 
-const client = new LlamaAPI({
-  logger: logger.child({ name: 'LlamaAPI' }),
+const client = new LlamaAPIClient({
+  logger: logger.child({ name: 'LlamaAPIClient' }),
   logLevel: 'debug', // Send all messages to pino, allowing it to filter
 });
 ```
@@ -308,10 +308,10 @@ globalThis.fetch = fetch;
 Or pass it to the client:
 
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 import fetch from 'my-fetch';
 
-const client = new LlamaAPI({ fetch });
+const client = new LlamaAPIClient({ fetch });
 ```
 
 ### Fetch options
@@ -319,9 +319,9 @@ const client = new LlamaAPI({ fetch });
 If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
 
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   fetchOptions: {
     // `RequestInit` options
   },
@@ -336,11 +336,11 @@ options to requests:
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
 
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 import * as undici from 'undici';
 
 const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   fetchOptions: {
     dispatcher: proxyAgent,
   },
@@ -350,9 +350,9 @@ const client = new LlamaAPI({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
 
 ```ts
-import LlamaAPI from 'llama-api';
+import LlamaAPIClient from 'llama-api-client';
 
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   fetchOptions: {
     proxy: 'http://localhost:8888',
   },
@@ -362,10 +362,10 @@ const client = new LlamaAPI({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import LlamaAPI from 'npm:llama-api';
+import LlamaAPIClient from 'npm:llama-api-client';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
-const client = new LlamaAPI({
+const client = new LlamaAPIClient({
   fetchOptions: {
     client: httpClient,
   },

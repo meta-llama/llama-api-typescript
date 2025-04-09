@@ -1,10 +1,10 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import LlamaAPI from 'llama-api';
-import { Message } from 'llama-api/resources/chat';
+import { LlamaAPIClient } from 'llama-api-client';
+import { Message } from 'llama-api-client/resources/chat';
 
 // gets API Key from environment variable LLAMA_API_KEY
-const llamaapi = new LlamaAPI();
+const llamaapi = new LlamaAPIClient();
 
 async function main() {
   const messages: Message[] = [

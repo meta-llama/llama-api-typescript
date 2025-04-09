@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import LlamaAPI from 'llama-api';
+import { LlamaAPIClient } from 'llama-api-client';
 
 // Interface for the Address structure
 interface Address {
@@ -11,7 +11,7 @@ interface Address {
 }
 
 // gets API Key from environment variable LLAMA_API_KEY
-const client = new LlamaAPI();
+const client = new LlamaAPIClient();
 
 async function run(stream: boolean = false) {
   const addressSchema = {

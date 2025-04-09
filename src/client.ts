@@ -33,7 +33,6 @@ import {
   CreateChatCompletionResponseStreamChunk,
   Message,
   MessageImageContentItem,
-  MessageReasoningContentItem,
   MessageTextContentItem,
   SystemMessage,
   ToolResponseMessage,
@@ -49,7 +48,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['LLAMA_API_BASE_URL'].
+   * Defaults to process.env['LLAMA_API_CLIENT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -101,7 +100,7 @@ export interface ClientOptions {
   /**
    * Set the log level.
    *
-   * Defaults to process.env['LLAMA_API_LOG'] or 'warn' if it isn't set.
+   * Defaults to process.env['LLAMA_API_CLIENT_LOG'] or 'warn' if it isn't set.
    */
   logLevel?: LogLevel | undefined;
 
@@ -114,9 +113,9 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Llama API API.
+ * API Client for interfacing with the Llama API Client API.
  */
-export class LlamaAPI {
+export class LlamaAPIClient {
   apiKey: string | null;
 
   baseURL: string;
@@ -132,10 +131,10 @@ export class LlamaAPI {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Llama API API.
+   * API Client for interfacing with the Llama API Client API.
    *
    * @param {string | null | undefined} [opts.apiKey=process.env['LLAMA_API_KEY'] ?? null]
-   * @param {string} [opts.baseURL=process.env['LLAMA_API_BASE_URL'] ?? https://api.llama.com] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['LLAMA_API_CLIENT_BASE_URL'] ?? https://api.llama.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -144,7 +143,7 @@ export class LlamaAPI {
    * @param {Record<string, string | undefined>} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = readEnv('LLAMA_API_BASE_URL'),
+    baseURL = readEnv('LLAMA_API_CLIENT_BASE_URL'),
     apiKey = readEnv('LLAMA_API_KEY') ?? null,
     ...opts
   }: ClientOptions = {}) {
@@ -155,14 +154,14 @@ export class LlamaAPI {
     };
 
     this.baseURL = options.baseURL!;
-    this.timeout = options.timeout ?? LlamaAPI.DEFAULT_TIMEOUT /* 1 minute */;
+    this.timeout = options.timeout ?? LlamaAPIClient.DEFAULT_TIMEOUT /* 1 minute */;
     this.logger = options.logger ?? console;
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
     this.logLevel =
       parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('LLAMA_API_LOG'), "process.env['LLAMA_API_LOG']", this) ??
+      parseLogLevel(readEnv('LLAMA_API_CLIENT_LOG'), "process.env['LLAMA_API_CLIENT_LOG']", this) ??
       defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
@@ -191,11 +190,11 @@ export class LlamaAPI {
     );
   }
 
-  protected authHeaders(opts: FinalRequestOptions): Headers | undefined {
+  protected authHeaders(opts: FinalRequestOptions): NullableHeaders | undefined {
     if (this.apiKey == null) {
       return undefined;
     }
-    return new Headers({ Authorization: `Bearer ${this.apiKey}` });
+    return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
   }
 
   /**
@@ -211,7 +210,7 @@ export class LlamaAPI {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new Errors.LlamaAPIError(
+        throw new Errors.LlamaAPIClientError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -676,10 +675,10 @@ export class LlamaAPI {
     }
   }
 
-  static LlamaAPI = this;
+  static LlamaAPIClient = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static LlamaAPIError = Errors.LlamaAPIError;
+  static LlamaAPIClientError = Errors.LlamaAPIClientError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -699,10 +698,10 @@ export class LlamaAPI {
   models: API.Models = new API.Models(this);
   moderations: API.Moderations = new API.Moderations(this);
 }
-LlamaAPI.Chat = Chat;
-LlamaAPI.Models = Models;
-LlamaAPI.Moderations = Moderations;
-export declare namespace LlamaAPI {
+LlamaAPIClient.Chat = Chat;
+LlamaAPIClient.Models = Models;
+LlamaAPIClient.Moderations = Moderations;
+export declare namespace LlamaAPIClient {
   export type RequestOptions = Opts.RequestOptions;
 
   export {
@@ -713,7 +712,6 @@ export declare namespace LlamaAPI {
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
     type Message as Message,
     type MessageImageContentItem as MessageImageContentItem,
-    type MessageReasoningContentItem as MessageReasoningContentItem,
     type MessageTextContentItem as MessageTextContentItem,
     type SystemMessage as SystemMessage,
     type ToolResponseMessage as ToolResponseMessage,

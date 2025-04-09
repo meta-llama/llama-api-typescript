@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { LlamaAPI } from 'llama-api';
+import { LlamaAPIClient } from 'llama-api-client';
 
-const { stringifyQuery } = LlamaAPI.prototype as any;
+const { stringifyQuery } = LlamaAPIClient.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [

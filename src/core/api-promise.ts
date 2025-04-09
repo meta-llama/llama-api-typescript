@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { type LlamaAPI } from '../client';
+import { type LlamaAPIClient } from '../client';
 
 import { type PromiseOrValue } from '../internal/types';
 import { APIResponseProps, defaultParseResponse } from '../internal/parse';
@@ -11,13 +11,13 @@ import { APIResponseProps, defaultParseResponse } from '../internal/parse';
  */
 export class APIPromise<T> extends Promise<T> {
   private parsedPromise: Promise<T> | undefined;
-  #client: LlamaAPI;
+  #client: LlamaAPIClient;
 
   constructor(
-    client: LlamaAPI,
+    client: LlamaAPIClient,
     private responsePromise: Promise<APIResponseProps>,
     private parseResponse: (
-      client: LlamaAPI,
+      client: LlamaAPIClient,
       props: APIResponseProps,
     ) => PromiseOrValue<T> = defaultParseResponse,
   ) {

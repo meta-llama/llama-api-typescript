@@ -1,3 +1,4 @@
+*.watchman-cookie*
 .prism.log
 node_modules
 yarn-error.log
