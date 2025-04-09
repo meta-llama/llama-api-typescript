@@ -34,19 +34,12 @@ export class Stream<Item> implements AsyncIterable<Item> {
       let done = false;
       try {
         for await (const sse of _iterSSEMessages(response, controller)) {
-          if (done) continue;
-
-          if (sse.event === 'start') {
-            continue;
-          }
-
-          if (sse.event === 'progress') {
-            continue;
-          }
-
-          if (sse.event === 'complete') {
-            done = true;
-            continue;
+          try {
+            yield JSON.parse(sse.data);
+          } catch (e) {
+            console.error(`Could not parse message into JSON:`, sse.data);
+            console.error(`From chunk:`, sse.raw);
+            throw e;
           }
         }
         done = true;
