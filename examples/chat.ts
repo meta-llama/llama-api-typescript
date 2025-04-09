@@ -1,9 +1,9 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import LlamaAPI from 'llama-api';
+import { LlamaAPIClient } from 'llama-api-client';
 
 // gets API Key from environment variable LLAMA_API_KEY
-const llamaapi = new LlamaAPI();
+const llamaapi = new LlamaAPIClient();
 
 async function main() {
   // Non-streaming:

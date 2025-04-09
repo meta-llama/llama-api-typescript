@@ -1,10 +1,10 @@
 #!/usr/bin/env -S npm run tsn -T
 
-import LlamaAPI from 'llama-api';
-import { Message } from 'llama-api/resources/chat';
-import { CompletionCreateParams } from 'llama-api/resources/chat';
+import { LlamaAPIClient } from 'llama-api-client';
+import { Message } from 'llama-api-client/resources/chat';
+import { CompletionCreateParams } from 'llama-api-client/resources/chat';
 
-const client = new LlamaAPI();
+const client = new LlamaAPIClient();
 
 const tools: CompletionCreateParams.Tool[] = [
   {
