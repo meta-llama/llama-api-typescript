@@ -28,11 +28,11 @@ describe('resource completions', () => {
     const response = await client.chat.completions.create({
       messages: [{ content: 'string', role: 'user' }],
       model: 'model',
-      max_completion_tokens: 256,
-      repetition_penalty: 0,
+      max_completion_tokens: 1,
+      repetition_penalty: 1,
       response_format: { json_schema: { name: 'name', schema: {} }, type: 'json_schema' },
       stream: false,
-      temperature: 1,
+      temperature: 0.6,
       tool_choice: 'none',
       tools: [
         {
@@ -41,7 +41,7 @@ describe('resource completions', () => {
         },
       ],
       top_k: 0,
-      top_p: 1,
+      top_p: 0.9,
     });
   });
 });
