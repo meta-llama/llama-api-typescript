@@ -53,7 +53,7 @@ export interface CompletionCreateParamsBase {
   /**
    * The maximum number of tokens to generate.
    */
-  max_completion_tokens?: number | null;
+  max_completion_tokens?: number;
 
   /**
    * Controls the likelyhood and generating repetitive responses.
@@ -81,7 +81,7 @@ export interface CompletionCreateParamsBase {
    * to more creative responses. Lower values will make the response more focused and
    * deterministic.
    */
-  temperature?: number | null;
+  temperature?: number;
 
   /**
    * Controls which (if any) tool is called by the model. `none` means the model will
@@ -110,7 +110,7 @@ export interface CompletionCreateParamsBase {
    * Controls diversity of the response by setting a probability threshold when
    * choosing the next token.
    */
-  top_p?: number | null;
+  top_p?: number;
 }
 
 export namespace CompletionCreateParams {
@@ -215,7 +215,7 @@ export namespace CompletionCreateParams {
        * more about Structured Outputs in the
        * [function calling guide](docs/guides/function-calling).
        */
-      strict?: boolean | null;
+      strict?: boolean;
     }
   }
 

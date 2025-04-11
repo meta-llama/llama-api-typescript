@@ -32,7 +32,7 @@ describe('resource completions', () => {
       repetition_penalty: 1,
       response_format: { json_schema: { name: 'name', schema: {} }, type: 'json_schema' },
       stream: false,
-      temperature: 0.6,
+      temperature: 0,
       tool_choice: 'none',
       tools: [
         {
@@ -41,7 +41,7 @@ describe('resource completions', () => {
         },
       ],
       top_k: 0,
-      top_p: 0.9,
+      top_p: 0,
     });
   });
 });
