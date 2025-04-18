@@ -65,7 +65,8 @@ async function run_streaming(): Promise<void> {
     if (chunk.event.delta.type === 'tool_call' && chunk.event.delta.function?.name) {
       console.log(`Using tool_id=${chunk.event.delta.id} with name=${chunk.event.delta.function.name}`);
       toolCall.function.name = chunk.event.delta.function.name;
-    } else if (chunk.event.delta.type === 'tool_call' && chunk.event.delta.function?.arguments) {
+    } 
+    if (chunk.event.delta.type === 'tool_call' && chunk.event.delta.function?.arguments) {
       toolCall.function.arguments += chunk.event.delta.function.arguments;
       process.stdout.write(chunk.event.delta.function.arguments);
     }
