@@ -89,7 +89,7 @@ export interface CreateChatCompletionRequest {
   /**
    * The maximum number of tokens to generate.
    */
-  max_completion_tokens?: number | null;
+  max_completion_tokens?: number;
 
   /**
    * Controls the likelyhood and generating repetitive responses.
@@ -117,7 +117,7 @@ export interface CreateChatCompletionRequest {
    * to more creative responses. Lower values will make the response more focused and
    * deterministic.
    */
-  temperature?: number | null;
+  temperature?: number;
 
   /**
    * Controls which (if any) tool is called by the model. `none` means the model will
@@ -146,7 +146,7 @@ export interface CreateChatCompletionRequest {
    * Controls diversity of the response by setting a probability threshold when
    * choosing the next token.
    */
-  top_p?: number | null;
+  top_p?: number;
 }
 
 export namespace CreateChatCompletionRequest {
@@ -251,7 +251,7 @@ export namespace CreateChatCompletionRequest {
        * more about Structured Outputs in the
        * [function calling guide](docs/guides/function-calling).
        */
-      strict?: boolean | null;
+      strict?: boolean;
     }
   }
 }
@@ -286,8 +286,6 @@ export interface CreateChatCompletionResponseStreamChunk {
    * The event containing the new content
    */
   event: CreateChatCompletionResponseStreamChunk.Event;
-
-  metrics?: Array<CreateChatCompletionResponseStreamChunk.Metric>;
 }
 
 export namespace CreateChatCompletionResponseStreamChunk {
@@ -304,7 +302,9 @@ export namespace CreateChatCompletionResponseStreamChunk {
     /**
      * Type of the event
      */
-    event_type: 'start' | 'complete' | 'progress';
+    event_type: 'start' | 'complete' | 'progress' | 'metrics';
+
+    metrics?: Array<Event.Metric>;
 
     /**
      * The reason why we stopped. Options are: - "stop": The model reached a natural
@@ -349,14 +349,14 @@ export namespace CreateChatCompletionResponseStreamChunk {
         name?: string;
       }
     }
-  }
 
-  export interface Metric {
-    metric: string;
+    export interface Metric {
+      metric: string;
 
-    value: number;
+      value: number;
 
-    unit?: string;
+      unit?: string;
+    }
   }
 }
 
