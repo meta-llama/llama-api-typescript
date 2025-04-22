@@ -37,7 +37,7 @@ export interface ModerationCreateParams {
   /**
    * Optional identifier of the model to use. Defaults to "Llama-Guard".
    */
-  model?: string | null;
+  model?: string;
 }
 
 export declare namespace Moderations {
