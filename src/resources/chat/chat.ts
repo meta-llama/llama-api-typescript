@@ -286,8 +286,6 @@ export interface CreateChatCompletionResponseStreamChunk {
    * The event containing the new content
    */
   event: CreateChatCompletionResponseStreamChunk.Event;
-
-  metrics?: Array<CreateChatCompletionResponseStreamChunk.Metric>;
 }
 
 export namespace CreateChatCompletionResponseStreamChunk {
@@ -304,7 +302,9 @@ export namespace CreateChatCompletionResponseStreamChunk {
     /**
      * Type of the event
      */
-    event_type: 'start' | 'complete' | 'progress';
+    event_type: 'start' | 'complete' | 'progress' | 'metrics';
+
+    metrics?: Array<Event.Metric>;
 
     /**
      * The reason why we stopped. Options are: - "stop": The model reached a natural
@@ -349,14 +349,14 @@ export namespace CreateChatCompletionResponseStreamChunk {
         name?: string;
       }
     }
-  }
 
-  export interface Metric {
-    metric: string;
+    export interface Metric {
+      metric: string;
 
-    value: number;
+      value: number;
 
-    unit?: string;
+      unit?: string;
+    }
   }
 }
 
