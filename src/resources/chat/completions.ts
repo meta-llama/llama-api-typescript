@@ -84,19 +84,6 @@ export interface CompletionCreateParamsBase {
   temperature?: number;
 
   /**
-   * Controls which (if any) tool is called by the model. `none` means the model will
-   * not call any tool and instead generates a message. `auto` means the model can
-   * pick between generating a message or calling one or more tools. `required` means
-   * the model must call one or more tools. Specifying a particular tool via
-   * `{"type": "function", "function": {"name": "my_function"}}` forces the model to
-   * call that tool.
-   *
-   * `none` is the default when no tools are present. `auto` is the default if tools
-   * are present.
-   */
-  tool_choice?: 'none' | 'auto' | 'required' | CompletionCreateParams.ChatCompletionNamedToolChoice;
-
-  /**
    * List of tool definitions available to the model
    */
   tools?: Array<CompletionCreateParams.Tool>;
@@ -155,28 +142,6 @@ export namespace CompletionCreateParams {
      * The type of response format being defined. Always `text`.
      */
     type: 'text';
-  }
-
-  /**
-   * Specifies a tool the model should use. Use to force the model to call a specific
-   * function.
-   */
-  export interface ChatCompletionNamedToolChoice {
-    function: ChatCompletionNamedToolChoice.Function;
-
-    /**
-     * The type of the tool. Currently, only `function` is supported.
-     */
-    type: 'function';
-  }
-
-  export namespace ChatCompletionNamedToolChoice {
-    export interface Function {
-      /**
-       * The name of the function to call.
-       */
-      name: string;
-    }
   }
 
   export interface Tool {
