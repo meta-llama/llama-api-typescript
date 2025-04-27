@@ -4,18 +4,15 @@
 
 This library provides convenient access to the Llama API Client REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.llama-api.com](https://docs.llama-api.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [https://llama.developer.meta.com/docs](https://llama.developer.meta.com/docs). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:meta-llama/llama-api-typescript.git
+npm install llama-api-client
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install llama-api-client`
 
 ## Usage
 
