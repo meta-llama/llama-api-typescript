@@ -43,7 +43,7 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['LLAMA_API_KEY'].
    */
-  apiKey?: string | null | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -116,7 +116,7 @@ export interface ClientOptions {
  * API Client for interfacing with the Llama API Client API.
  */
 export class LlamaAPIClient {
-  apiKey: string | null;
+  apiKey: string;
 
   baseURL: string;
   maxRetries: number;
@@ -133,7 +133,7 @@ export class LlamaAPIClient {
   /**
    * API Client for interfacing with the Llama API Client API.
    *
-   * @param {string | null | undefined} [opts.apiKey=process.env['LLAMA_API_KEY'] ?? null]
+   * @param {string | undefined} [opts.apiKey=process.env['LLAMA_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['LLAMA_API_CLIENT_BASE_URL'] ?? https://api.llama.com] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
@@ -144,9 +144,15 @@ export class LlamaAPIClient {
    */
   constructor({
     baseURL = readEnv('LLAMA_API_CLIENT_BASE_URL'),
-    apiKey = readEnv('LLAMA_API_KEY') ?? null,
+    apiKey = readEnv('LLAMA_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
+    if (apiKey === undefined) {
+      throw new Errors.LlamaAPIClientError(
+        "The LLAMA_API_KEY environment variable is missing or empty; either provide it, or instantiate the LlamaAPIClient client with an apiKey option, like new LlamaAPIClient({ apiKey: 'My API Key' }).",
+      );
+    }
+
     const options: ClientOptions = {
       apiKey,
       ...opts,
@@ -178,22 +184,10 @@ export class LlamaAPIClient {
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
-    if (this.apiKey && values.get('authorization')) {
-      return;
-    }
-    if (nulls.has('authorization')) {
-      return;
-    }
-
-    throw new Error(
-      'Could not resolve authentication method. Expected the apiKey to be set. Or for the "Authorization" headers to be explicitly omitted',
-    );
+    return;
   }
 
   protected authHeaders(opts: FinalRequestOptions): NullableHeaders | undefined {
-    if (this.apiKey == null) {
-      return undefined;
-    }
     return buildHeaders([{ Authorization: `Bearer ${this.apiKey}` }]);
   }
 
