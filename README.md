@@ -52,8 +52,8 @@ const stream = await client.chat.completions.create({
   model: 'model',
   stream: true,
 });
-for await (const createChatCompletionResponseStreamChunk of stream) {
-  console.log(createChatCompletionResponseStreamChunk.completion_message);
+for await (const chunk of stream) {
+  console.log(chunk);
 }
 ```
 
