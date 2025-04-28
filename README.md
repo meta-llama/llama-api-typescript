@@ -405,3 +405,6 @@ If you are interested in other runtime environments, please open or upvote an is
 ## Contributing
 
 See [the contributing documentation](./CONTRIBUTING.md).
+
+## License
+Llama API Typescript SDK is MIT licensed, as found in the LICENSE file.
