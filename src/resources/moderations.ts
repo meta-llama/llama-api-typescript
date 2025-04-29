@@ -10,7 +10,7 @@ export class Moderations extends APIResource {
    * Classifies if given messages are potentially harmful across several categories.
    */
   create(body: ModerationCreateParams, options?: RequestOptions): APIPromise<ModerationCreateResponse> {
-    return this._client.post('/v1/moderations', { body, ...options });
+    return this._client.post('/moderations', { body, ...options });
   }
 }
 

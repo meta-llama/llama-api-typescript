@@ -36,11 +36,11 @@ export class Completions extends APIResource {
         ...options,
         headers: {
           ...options?.headers,
-          Accept: 'text/event-stream',
+          'Accept': 'text/event-stream',
         },
       };
     }
-    return this._client.post('/v1/chat/completions', { body, ...options, stream: body.stream ?? false }) as
+    return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as
       | APIPromise<ChatAPI.CreateChatCompletionResponse>
       | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>>;
   }

@@ -7,7 +7,7 @@ import { path } from '../internal/utils/path';
 
 export class Models extends APIResource {
   retrieve(model: string, options?: RequestOptions): APIPromise<LlamaModel> {
-    return this._client.get(path`/v1/models/${model}`, options);
+    return this._client.get(path`/models/${model}`, options);
   }
 
   /**
@@ -15,7 +15,7 @@ export class Models extends APIResource {
    * one.
    */
   list(options?: RequestOptions): APIPromise<ModelListResponse> {
-    return (this._client.get('/v1/models', options) as APIPromise<{ data: ModelListResponse }>)._thenUnwrap(
+    return (this._client.get('/models', options) as APIPromise<{ data: ModelListResponse }>)._thenUnwrap(
       (obj) => obj.data,
     );
   }
