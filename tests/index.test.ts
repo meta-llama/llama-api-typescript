@@ -312,13 +312,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['LLAMA_API_CLIENT_BASE_URL'] = ''; // empty
       const client = new LlamaAPIClient({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.llama.com');
+      expect(client.baseURL).toEqual('https://api.llama.com/v1');
     });
 
     test('blank env variable', () => {
       process.env['LLAMA_API_CLIENT_BASE_URL'] = '  '; // blank
       const client = new LlamaAPIClient({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('https://api.llama.com');
+      expect(client.baseURL).toEqual('https://api.llama.com/v1');
     });
   });
 

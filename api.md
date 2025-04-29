@@ -17,7 +17,7 @@ Types:
 
 Methods:
 
-- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CreateChatCompletionResponse</code>
+- <code title="post /chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CreateChatCompletionResponse</code>
 
 # Models
 
@@ -28,8 +28,8 @@ Types:
 
 Methods:
 
-- <code title="get /v1/models/{model}">client.models.<a href="./src/resources/models.ts">retrieve</a>(model) -> LlamaModel</code>
-- <code title="get /v1/models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelListResponse</code>
+- <code title="get /models/{model}">client.models.<a href="./src/resources/models.ts">retrieve</a>(model) -> LlamaModel</code>
+- <code title="get /models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelListResponse</code>
 
 # Moderations
 
@@ -39,4 +39,4 @@ Types:
 
 Methods:
 
-- <code title="post /v1/moderations">client.moderations.<a href="./src/resources/moderations.ts">create</a>({ ...params }) -> ModerationCreateResponse</code>
+- <code title="post /moderations">client.moderations.<a href="./src/resources/moderations.ts">create</a>({ ...params }) -> ModerationCreateResponse</code>

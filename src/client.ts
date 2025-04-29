@@ -134,7 +134,7 @@ export class LlamaAPIClient {
    * API Client for interfacing with the Llama API Client API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['LLAMA_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['LLAMA_API_CLIENT_BASE_URL'] ?? https://api.llama.com] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['LLAMA_API_CLIENT_BASE_URL'] ?? https://api.llama.com/v1] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -156,7 +156,7 @@ export class LlamaAPIClient {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `https://api.llama.com`,
+      baseURL: baseURL || `https://api.llama.com/v1`,
     };
 
     this.baseURL = options.baseURL!;

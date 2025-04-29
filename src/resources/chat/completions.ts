@@ -31,7 +31,7 @@ export class Completions extends APIResource {
   ):
     | APIPromise<ChatAPI.CreateChatCompletionResponse>
     | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>> {
-    return this._client.post('/v1/chat/completions', { body, ...options, stream: body.stream ?? false }) as
+    return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as
       | APIPromise<ChatAPI.CreateChatCompletionResponse>
       | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>>;
   }
