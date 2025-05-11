@@ -5,6 +5,7 @@ import { Message } from 'llama-api-client/resources/chat';
 import { CompletionCreateParams } from 'llama-api-client/resources/chat';
 
 const client = new LlamaAPIClient();
+const model = 'Llama-3.3-70B-Instruct';
 
 const tools: CompletionCreateParams.Tool[] = [
   {
@@ -39,17 +40,13 @@ interface getWeatherArgs {
 async function run_streaming(): Promise<void> {
   const messages: Message[] = [
     {
-      role: 'system',
-      content: 'You are a helpful assistant.',
-    },
-    {
       role: 'user',
       content: 'Is it raining in Bellevue?',
     },
   ];
 
   const response = await client.chat.completions.create({
-    model: 'Llama-3.3-70B-Instruct',
+    model: model,
     messages: messages,
     tools: tools,
     stream: true,
@@ -78,7 +75,7 @@ async function run_streaming(): Promise<void> {
 
   const completionMessage: Message = {
     role: 'assistant',
-    content: '',
+    content: { type: 'text', text: '' },
     tool_calls: [toolCall],
     stop_reason: stopReason as 'stop' | 'tool_calls' | 'length',
   };
@@ -87,7 +84,6 @@ async function run_streaming(): Promise<void> {
   if (toolCall.function.name === 'get_weather') {
     const getWeatherArgs: getWeatherArgs = JSON.parse(toolCall.function.arguments);
     const toolResult: string = await getWeather(getWeatherArgs.location);
-    toolCall.function.arguments = toolResult;
     messages.push({
       role: 'tool',
       tool_call_id: toolCall.id,
@@ -97,7 +93,7 @@ async function run_streaming(): Promise<void> {
   }
 
   const nextResponse = await client.chat.completions.create({
-    model: 'Llama-3.3-70B-Instruct',
+    model: model,
     messages: messages,
     tools: tools,
     stream: true,
@@ -114,17 +110,13 @@ async function run_streaming(): Promise<void> {
 async function run(): Promise<void> {
   const messages: Message[] = [
     {
-      role: 'system',
-      content: 'You are a helpful assistant.',
-    },
-    {
       role: 'user',
       content: 'Is it raining in Bellevue?',
     },
   ];
 
   const response = await client.chat.completions.create({
-    model: 'Llama-3.3-70B-Instruct',
+    model: model,
     messages: messages,
     tools: tools,
     max_completion_tokens: 2048,
@@ -155,7 +147,7 @@ async function run(): Promise<void> {
   }
   // Next Turn
   const nextResponse = await client.chat.completions.create({
-    model: 'Llama-3.3-70B-Instruct',
+    model: model,
     messages: messages,
     tools: tools,
     max_completion_tokens: 2048,
