@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Llama API Client REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.llama-api.com](https://docs.llama-api.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [llama.developer.meta.com](https://llama.developer.meta.com/docs). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -35,7 +35,7 @@ async function main() {
     model: 'model',
   });
 
-  console.log(createChatCompletionResponse.completion_message);
+  console.log(createChatCompletionResponse.id);
 }
 
 main();
@@ -56,7 +56,7 @@ const stream = await client.chat.completions.create({
   stream: true,
 });
 for await (const createChatCompletionResponseStreamChunk of stream) {
-  console.log(createChatCompletionResponseStreamChunk.completion_message);
+  console.log(createChatCompletionResponseStreamChunk.id);
 }
 ```
 
@@ -193,7 +193,7 @@ const { data: createChatCompletionResponse, response: raw } = await client.chat.
   .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(createChatCompletionResponse.completion_message);
+console.log(createChatCompletionResponse.id);
 ```
 
 ### Logging
