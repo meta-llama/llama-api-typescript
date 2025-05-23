@@ -36,7 +36,7 @@ export class Completions extends APIResource {
         ...options,
         headers: {
           ...options?.headers,
-          'Accept': 'text/event-stream',
+          Accept: 'text/event-stream',
         },
       };
     }
