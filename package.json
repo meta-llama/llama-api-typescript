@@ -1,6 +1,6 @@
 {
   "name": "llama-api-client",
-  "version": "0.0.1-alpha.0",
+  "version": "0.1.1",
   "description": "The official TypeScript library for the Llama API Client API",
   "author": "Llama API Client <support@llama.developer.meta.com>",
   "types": "dist/index.d.ts",
