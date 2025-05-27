@@ -6,7 +6,6 @@ This library provides convenient access to the Llama API Client REST API from se
 
 The REST API documentation can be found on [https://llama.developer.meta.com/docs](https://llama.developer.meta.com/docs). The full API of this library can be found in [api.md](api.md).
 
-
 ## Installation
 
 ```sh
@@ -406,4 +405,5 @@ If you are interested in other runtime environments, please open or upvote an is
 See [the contributing documentation](./CONTRIBUTING.md).
 
 ## License
+
 Llama API Typescript SDK is MIT licensed, as found in the LICENSE file.

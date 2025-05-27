@@ -88,8 +88,8 @@ async function run(stream: boolean = false) {
 
     // Parse the JSON string into an Address object
     if (
-      typeof response.completion_message.content !== 'string' &&
-      response.completion_message.content.type === 'text'
+      typeof response.completion_message?.content !== 'string' &&
+      response.completion_message.content?.type === 'text'
     ) {
       const address: Address = JSON.parse(response.completion_message.content.text);
       console.log(address);

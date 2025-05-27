@@ -6,7 +6,7 @@
     "rootDir": "./dist/src",
     "paths": {
       "llama-api-client/*": ["dist/src/*"],
-      "llama-api-client": ["dist/src/index.ts"],
+      "llama-api-client": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

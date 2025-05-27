@@ -33,6 +33,7 @@ describe('resource completions', () => {
       response_format: { json_schema: { name: 'name', schema: {} }, type: 'json_schema' },
       stream: false,
       temperature: 0,
+      tool_choice: 'none',
       tools: [
         {
           function: { name: 'name', description: 'description', parameters: { foo: 'bar' }, strict: true },
@@ -41,6 +42,7 @@ describe('resource completions', () => {
       ],
       top_k: 0,
       top_p: 0,
+      user: 'user',
     });
   });
 });
