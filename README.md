@@ -29,16 +29,12 @@ const client = new LlamaAPIClient({
   apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const createChatCompletionResponse = await client.chat.completions.create({
-    messages: [{ content: 'string', role: 'user' }],
-    model: 'model',
-  });
+const createChatCompletionResponse = await client.chat.completions.create({
+  messages: [{ content: 'string', role: 'user' }],
+  model: 'model',
+});
 
-  console.log(createChatCompletionResponse.id);
-}
-
-main();
+console.log(createChatCompletionResponse.id);
 ```
 
 ## Streaming responses
@@ -75,16 +71,12 @@ const client = new LlamaAPIClient({
   apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: LlamaAPIClient.Chat.CompletionCreateParams = {
-    messages: [{ content: 'string', role: 'user' }],
-    model: 'model',
-  };
-  const createChatCompletionResponse: LlamaAPIClient.CreateChatCompletionResponse =
-    await client.chat.completions.create(params);
-}
-
-main();
+const params: LlamaAPIClient.Chat.CompletionCreateParams = {
+  messages: [{ content: 'string', role: 'user' }],
+  model: 'model',
+};
+const createChatCompletionResponse: LlamaAPIClient.CreateChatCompletionResponse =
+  await client.chat.completions.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -97,21 +89,17 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const createChatCompletionResponse = await client.chat.completions
-    .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
-    .catch(async (err) => {
-      if (err instanceof LlamaAPIClient.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const createChatCompletionResponse = await client.chat.completions
+  .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
+  .catch(async (err) => {
+    if (err instanceof LlamaAPIClient.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:
