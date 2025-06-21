@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:stainless-sdks/llama-api-typescript.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install llama-api-client`
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install llama-api-client`
 
 ## Usage
 
