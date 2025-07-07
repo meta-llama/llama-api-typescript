@@ -247,7 +247,7 @@ export namespace CreateChatCompletionRequest {
        * The parameters the functions accepts, described as a JSON Schema object.
        * Omitting `parameters` defines a function with an empty parameter list.
        */
-      parameters?: Record<string, unknown>;
+      parameters?: { [key: string]: unknown };
 
       /**
        * Whether to enable strict schema adherence when generating the function call. If
