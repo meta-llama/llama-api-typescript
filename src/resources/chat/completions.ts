@@ -31,15 +31,6 @@ export class Completions extends APIResource {
   ):
     | APIPromise<ChatAPI.CreateChatCompletionResponse>
     | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>> {
-    if (body.stream) {
-      options = {
-        ...options,
-        headers: {
-          ...options?.headers,
-          Accept: 'text/event-stream',
-        },
-      };
-    }
     return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as
       | APIPromise<ChatAPI.CreateChatCompletionResponse>
       | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>>;
@@ -220,7 +211,7 @@ export namespace CompletionCreateParams {
        * The parameters the functions accepts, described as a JSON Schema object.
        * Omitting `parameters` defines a function with an empty parameter list.
        */
-      parameters?: Record<string, unknown>;
+      parameters?: { [key: string]: unknown };
 
       /**
        * Whether to enable strict schema adherence when generating the function call. If

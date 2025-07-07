@@ -1,16 +1,21 @@
 # Llama API Client TypeScript API Library
 
-[![NPM version](https://img.shields.io/npm/v/llama-api-client.svg)](https://npmjs.org/package/llama-api-client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/llama-api-client)
+[![NPM version](<https://img.shields.io/npm/v/llama-api-client.svg?label=npm%20(stable)>)](https://npmjs.org/package/llama-api-client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/llama-api-client)
 
 This library provides convenient access to the Llama API Client REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [https://llama.developer.meta.com/docs](https://llama.developer.meta.com/docs). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [llama.developer.meta.com](https://llama.developer.meta.com/docs). The full API of this library can be found in [api.md](api.md).
+
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
 ```sh
-npm install llama-api-client
+npm install git+ssh://git@github.com:stainless-sdks/llama-api-typescript.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install llama-api-client`
 
 ## Usage
 
@@ -24,16 +29,12 @@ const client = new LlamaAPIClient({
   apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const createChatCompletionResponse = await client.chat.completions.create({
-    messages: [{ content: 'string', role: 'user' }],
-    model: 'model',
-  });
+const createChatCompletionResponse = await client.chat.completions.create({
+  messages: [{ content: 'string', role: 'user' }],
+  model: 'model',
+});
 
-  console.log(createChatCompletionResponse.completion_message);
-}
-
-main();
+console.log(createChatCompletionResponse.id);
 ```
 
 ## Streaming responses
@@ -50,8 +51,8 @@ const stream = await client.chat.completions.create({
   model: 'model',
   stream: true,
 });
-for await (const chunk of stream) {
-  console.log(chunk);
+for await (const createChatCompletionResponseStreamChunk of stream) {
+  console.log(createChatCompletionResponseStreamChunk.id);
 }
 ```
 
@@ -70,16 +71,12 @@ const client = new LlamaAPIClient({
   apiKey: process.env['LLAMA_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: LlamaAPIClient.Chat.CompletionCreateParams = {
-    messages: [{ content: 'string', role: 'user' }],
-    model: 'model',
-  };
-  const createChatCompletionResponse: LlamaAPIClient.CreateChatCompletionResponse =
-    await client.chat.completions.create(params);
-}
-
-main();
+const params: LlamaAPIClient.Chat.CompletionCreateParams = {
+  messages: [{ content: 'string', role: 'user' }],
+  model: 'model',
+};
+const createChatCompletionResponse: LlamaAPIClient.CreateChatCompletionResponse =
+  await client.chat.completions.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -92,24 +89,20 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const createChatCompletionResponse = await client.chat.completions
-    .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
-    .catch(async (err) => {
-      if (err instanceof LlamaAPIClient.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const createChatCompletionResponse = await client.chat.completions
+  .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
+  .catch(async (err) => {
+    if (err instanceof LlamaAPIClient.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
-Error codes are as followed:
+Error codes are as follows:
 
 | Status Code | Error Type                 |
 | ----------- | -------------------------- |
@@ -188,7 +181,7 @@ const { data: createChatCompletionResponse, response: raw } = await client.chat.
   .create({ messages: [{ content: 'string', role: 'user' }], model: 'model' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(createChatCompletionResponse.completion_message);
+console.log(createChatCompletionResponse.id);
 ```
 
 ### Logging
@@ -268,9 +261,8 @@ parameter. This library doesn't validate at runtime that the request matches the
 send will be sent as-is.
 
 ```ts
-client.foo.create({
-  foo: 'my_param',
-  bar: 12,
+client.chat.completions.create({
+  // ...
   // @ts-expect-error baz is not yet public
   baz: 'undocumented option',
 });
@@ -379,7 +371,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/meta-llama/llama-api-typescript/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/llama-api-typescript/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
@@ -388,7 +380,7 @@ TypeScript >= 4.9 is supported.
 The following runtimes are supported:
 
 - Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
-- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Node.js 20 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
 - Deno v1.28.0 or higher.
 - Bun 1.0 or later.
 - Cloudflare Workers.
@@ -403,7 +395,3 @@ If you are interested in other runtime environments, please open or upvote an is
 ## Contributing
 
 See [the contributing documentation](./CONTRIBUTING.md).
-
-## License
-
-Llama API Typescript SDK is MIT licensed, as found in the LICENSE file.
