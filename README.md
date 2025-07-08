@@ -11,11 +11,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:meta-llama/llama-api-typescript.git
+npm install llama-api-client
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install llama-api-client`
 
 ## Usage
 
@@ -34,7 +31,7 @@ const createChatCompletionResponse = await client.chat.completions.create({
   model: 'model',
 });
 
-console.log(createChatCompletionResponse.id);
+console.log(createChatCompletionResponse.completion_message);
 ```
 
 ## Streaming responses
@@ -52,7 +49,7 @@ const stream = await client.chat.completions.create({
   stream: true,
 });
 for await (const createChatCompletionResponseStreamChunk of stream) {
-  console.log(createChatCompletionResponseStreamChunk.id);
+  console.log(createChatCompletionResponseStreamChunk);
 }
 ```
 
@@ -395,3 +392,7 @@ If you are interested in other runtime environments, please open or upvote an is
 ## Contributing
 
 See [the contributing documentation](./CONTRIBUTING.md).
+
+## License
+
+Llama API Typescript SDK is MIT licensed, as found in the LICENSE file.	
