@@ -21,7 +21,6 @@ import { ModerationCreateParams, ModerationCreateResponse, Moderations } from '.
 import {
   Chat,
   CompletionMessage,
-  CreateChatCompletionRequest,
   CreateChatCompletionResponse,
   CreateChatCompletionResponseStreamChunk,
   Message,
@@ -741,7 +740,6 @@ export declare namespace LlamaAPIClient {
   export {
     Chat as Chat,
     type CompletionMessage as CompletionMessage,
-    type CreateChatCompletionRequest as CreateChatCompletionRequest,
     type CreateChatCompletionResponse as CreateChatCompletionResponse,
     type CreateChatCompletionResponseStreamChunk as CreateChatCompletionResponseStreamChunk,
     type Message as Message,

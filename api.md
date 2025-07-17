@@ -3,7 +3,6 @@
 Types:
 
 - <code><a href="./src/resources/chat/chat.ts">CompletionMessage</a></code>
-- <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionRequest</a></code>
 - <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionResponse</a></code>
 - <code><a href="./src/resources/chat/chat.ts">CreateChatCompletionResponseStreamChunk</a></code>
 - <code><a href="./src/resources/chat/chat.ts">Message</a></code>
