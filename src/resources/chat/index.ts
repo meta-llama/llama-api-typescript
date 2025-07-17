@@ -3,7 +3,6 @@
 export {
   Chat,
   type CompletionMessage,
-  type CreateChatCompletionRequest,
   type CreateChatCompletionResponse,
   type CreateChatCompletionResponseStreamChunk,
   type Message,
