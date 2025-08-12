@@ -8,7 +8,7 @@ const client = new LlamaAPIClient({
 });
 
 describe('resource models', () => {
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.models.retrieve('Llama-3.3-70B-Instruct');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource models', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
+  // Prism tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.models.list();
     const rawResponse = await responsePromise.asResponse();
