@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.5 (2025-08-13)
+
+Full Changelog: [v0.1.4...v0.1.5](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.4...v0.1.5)
+
+### Chores
+
+* update SDK settings ([c272cc4](https://github.com/meta-llama/llama-api-typescript/commit/c272cc4218d7ebf5b194043bf5b089c55a1e6bea))
+
 ## 0.1.4 (2025-08-13)
 
 Full Changelog: [v0.1.3...v0.1.4](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.3...v0.1.4)
