@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.4 (2025-08-13)
+
+Full Changelog: [v0.1.3...v0.1.4](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.3...v0.1.4)
+
+### Chores
+
+* fix readme display ([568081c](https://github.com/meta-llama/llama-api-typescript/commit/568081c03f890cd19091401758a9b2714f5f41fd))
+
 ## 0.1.3 (2025-08-12)
 
 Full Changelog: [v0.1.2...v0.1.3](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.2...v0.1.3)
