@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.6 (2025-08-16)
+
+Full Changelog: [v0.1.5...v0.1.6](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.5...v0.1.6)
+
+### Chores
+
+* **deps:** update dependency @types/node to v20.17.58 ([69d5447](https://github.com/meta-llama/llama-api-typescript/commit/69d5447e462c32017d1f693a74045ef52645b7c5))
+* **internal:** formatting change ([cc8da4d](https://github.com/meta-llama/llama-api-typescript/commit/cc8da4d239d7221c8db5c9482b36349f07db2d48))
+
 ## 0.1.5 (2025-08-13)
 
 Full Changelog: [v0.1.4...v0.1.5](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.4...v0.1.5)
