@@ -731,9 +731,11 @@ export class LlamaAPIClient {
   models: API.Models = new API.Models(this);
   moderations: API.Moderations = new API.Moderations(this);
 }
+
 LlamaAPIClient.Chat = Chat;
 LlamaAPIClient.Models = Models;
 LlamaAPIClient.Moderations = Moderations;
+
 export declare namespace LlamaAPIClient {
   export type RequestOptions = Opts.RequestOptions;
 
