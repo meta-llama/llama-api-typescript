@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.0 (2025-08-23)
+
+Full Changelog: [v0.1.5...v0.2.0](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.5...v0.2.0)
+
+### Features
+
+* **mcp:** add code execution tool ([9e72409](https://github.com/meta-llama/llama-api-typescript/commit/9e72409e9733834fef300693b79bf7cf13506f66))
+
+
+### Chores
+
+* add package to package.json ([5a0ff68](https://github.com/meta-llama/llama-api-typescript/commit/5a0ff68bee3ca23debc141ee714480f4275338f1))
+* **client:** qualify global Blob ([ec13a74](https://github.com/meta-llama/llama-api-typescript/commit/ec13a749bb8be01f0ed685cf76a88b5d8af28181))
+* **deps:** update dependency @types/node to v20.17.58 ([69d5447](https://github.com/meta-llama/llama-api-typescript/commit/69d5447e462c32017d1f693a74045ef52645b7c5))
+* **internal:** formatting change ([cc8da4d](https://github.com/meta-llama/llama-api-typescript/commit/cc8da4d239d7221c8db5c9482b36349f07db2d48))
+* update CI script ([8bad679](https://github.com/meta-llama/llama-api-typescript/commit/8bad6792313b36c236bfe6020c533bd8dd517d8c))
+
 ## 0.1.5 (2025-08-13)
 
 Full Changelog: [v0.1.4...v0.1.5](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.4...v0.1.5)
