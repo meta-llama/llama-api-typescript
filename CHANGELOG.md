@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 (2025-08-28)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* **internal:** update global Error reference ([e541458](https://github.com/meta-llama/llama-api-typescript/commit/e541458a4c32012d8ca36af03f60a21dd9e8d679))
+
 ## 0.2.0 (2025-08-23)
 
 Full Changelog: [v0.1.5...v0.2.0](https://github.com/meta-llama/llama-api-typescript/compare/v0.1.5...v0.2.0)
