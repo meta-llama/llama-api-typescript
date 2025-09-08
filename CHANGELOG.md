@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.2 (2025-09-08)
+
+Full Changelog: [v0.2.1...v0.2.2](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.1...v0.2.2)
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([c804bb5](https://github.com/meta-llama/llama-api-typescript/commit/c804bb5d65dc9753e664617ab7b7585703809451))
+
+
+### Chores
+
+* ci build action ([22ba16c](https://github.com/meta-llama/llama-api-typescript/commit/22ba16c74d64ede49ad2134ead57571ce82a2952))
+
 ## 0.2.1 (2025-08-28)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.0...v0.2.1)
