@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.3 (2025-09-19)
+
+Full Changelog: [v0.2.2...v0.2.3](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.2...v0.2.3)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([c34a02b](https://github.com/meta-llama/llama-api-typescript/commit/c34a02bceeea424083b69374d7388dc09c0e5349))
+
 ## 0.2.2 (2025-09-08)
 
 Full Changelog: [v0.2.1...v0.2.2](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.1...v0.2.2)
