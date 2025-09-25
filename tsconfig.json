@@ -7,10 +7,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "llama-api-client/*": ["src/*"],
-      "llama-api-client": ["src/index.ts"]
+      "llama-api-client/*": ["./src/*"],
+      "llama-api-client": ["./src/index.ts"]
     },
     "noEmit": true,
 
