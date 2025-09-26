@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.3 (2025-09-26)
+
+Full Changelog: [v0.2.2...v0.2.3](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.2...v0.2.3)
+
+### Performance Improvements
+
+* faster formatting ([12ccb56](https://github.com/meta-llama/llama-api-typescript/commit/12ccb565d1db1013a78fb0dc9dcac63a8b3468e6))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([c34a02b](https://github.com/meta-llama/llama-api-typescript/commit/c34a02bceeea424083b69374d7388dc09c0e5349))
+* **internal:** codegen related update ([6741d52](https://github.com/meta-llama/llama-api-typescript/commit/6741d522aa8457ed9c2bec4e6807a51ca7909c7f))
+* **internal:** fix incremental formatting in some cases ([28b4b8b](https://github.com/meta-llama/llama-api-typescript/commit/28b4b8b8956a67c0261d38a79f16afb5a832df54))
+* **internal:** ignore .eslintcache ([73e684d](https://github.com/meta-llama/llama-api-typescript/commit/73e684d8ff062fd5e9d6b24636207089cd0a3c9b))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([f77cba7](https://github.com/meta-llama/llama-api-typescript/commit/f77cba7e13e1c7420e065b497413987529502e76))
+
 ## 0.2.2 (2025-09-08)
 
 Full Changelog: [v0.2.1...v0.2.2](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.1...v0.2.2)
