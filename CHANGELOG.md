@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0 (2025-10-01)
+
+Full Changelog: [v0.2.3...v0.3.0](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.3...v0.3.0)
+
+### Features
+
+* **api:** manual updates ([2bff115](https://github.com/meta-llama/llama-api-typescript/commit/2bff1156837e7923942b0b939e9adb485c7b529d))
+
+
+### Chores
+
+* **internal:** remove .eslintcache ([799fffc](https://github.com/meta-llama/llama-api-typescript/commit/799fffca3fa679b29c8fb3c7ccdf8901d459cc2f))
+
 ## 0.2.3 (2025-09-26)
 
 Full Changelog: [v0.2.2...v0.2.3](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.2...v0.2.3)
