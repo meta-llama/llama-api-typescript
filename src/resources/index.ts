@@ -14,3 +14,12 @@ export {
 } from './chat/chat';
 export { Models, type LlamaModel, type ModelListResponse } from './models';
 export { Moderations, type ModerationCreateResponse, type ModerationCreateParams } from './moderations';
+export {
+  Uploads,
+  type UploadCreateResponse,
+  type UploadGetResponse,
+  type UploadPartResponse,
+  type UploadCreateParams,
+  type UploadGetParams,
+  type UploadPartParams,
+} from './uploads';

@@ -30,6 +30,20 @@ Methods:
 - <code title="get /models/{model}">client.models.<a href="./src/resources/models.ts">retrieve</a>(model) -> LlamaModel</code>
 - <code title="get /models">client.models.<a href="./src/resources/models.ts">list</a>() -> ModelListResponse</code>
 
+# Uploads
+
+Types:
+
+- <code><a href="./src/resources/uploads.ts">UploadCreateResponse</a></code>
+- <code><a href="./src/resources/uploads.ts">UploadGetResponse</a></code>
+- <code><a href="./src/resources/uploads.ts">UploadPartResponse</a></code>
+
+Methods:
+
+- <code title="post /uploads">client.uploads.<a href="./src/resources/uploads.ts">create</a>({ ...params }) -> UploadCreateResponse</code>
+- <code title="get /uploads/{upload_id}">client.uploads.<a href="./src/resources/uploads.ts">get</a>(uploadID, { ...params }) -> UploadGetResponse</code>
+- <code title="post /uploads/{upload_id}">client.uploads.<a href="./src/resources/uploads.ts">part</a>(uploadID, { ...params }) -> UploadPartResponse</code>
+
 # Moderations
 
 Types:
