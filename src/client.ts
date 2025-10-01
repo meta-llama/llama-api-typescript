@@ -19,6 +19,15 @@ import { APIPromise } from './core/api-promise';
 import { LlamaModel, ModelListResponse, Models } from './resources/models';
 import { ModerationCreateParams, ModerationCreateResponse, Moderations } from './resources/moderations';
 import {
+  UploadCreateParams,
+  UploadCreateResponse,
+  UploadGetParams,
+  UploadGetResponse,
+  UploadPartParams,
+  UploadPartResponse,
+  Uploads as UploadsAPIUploads,
+} from './resources/uploads';
+import {
   Chat,
   CompletionMessage,
   CreateChatCompletionResponse,
@@ -729,11 +738,13 @@ export class LlamaAPIClient {
 
   chat: API.Chat = new API.Chat(this);
   models: API.Models = new API.Models(this);
+  uploads: API.Uploads = new API.Uploads(this);
   moderations: API.Moderations = new API.Moderations(this);
 }
 
 LlamaAPIClient.Chat = Chat;
 LlamaAPIClient.Models = Models;
+LlamaAPIClient.Uploads = UploadsAPIUploads;
 LlamaAPIClient.Moderations = Moderations;
 
 export declare namespace LlamaAPIClient {
@@ -753,6 +764,16 @@ export declare namespace LlamaAPIClient {
   };
 
   export { Models as Models, type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };
+
+  export {
+    UploadsAPIUploads as Uploads,
+    type UploadCreateResponse as UploadCreateResponse,
+    type UploadGetResponse as UploadGetResponse,
+    type UploadPartResponse as UploadPartResponse,
+    type UploadCreateParams as UploadCreateParams,
+    type UploadGetParams as UploadGetParams,
+    type UploadPartParams as UploadPartParams,
+  };
 
   export {
     Moderations as Moderations,
