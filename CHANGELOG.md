@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2025-10-03)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/meta-llama/llama-api-typescript/compare/v0.3.0...v0.3.1)
+
+### Chores
+
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([5e80fb3](https://github.com/meta-llama/llama-api-typescript/commit/5e80fb3d9d408d750b4d2fc0e0b288b62e6e451c))
+
 ## 0.3.0 (2025-10-01)
 
 Full Changelog: [v0.2.3...v0.3.0](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.3...v0.3.0)
