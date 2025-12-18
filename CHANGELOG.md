@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.4.0 (2025-12-18)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/meta-llama/llama-api-typescript/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** manual updates ([9442f86](https://github.com/meta-llama/llama-api-typescript/commit/9442f86dbb94c1f34527848aac2051610b3690e0))
+* **api:** manual updates ([ff287c8](https://github.com/meta-llama/llama-api-typescript/commit/ff287c8c55df5f74a6c8b53961d34ca70c318992))
+* **api:** manual updates ([ba92776](https://github.com/meta-llama/llama-api-typescript/commit/ba927760645c33f2a5cac83ca052c698da3c048a))
+
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([304abc7](https://github.com/meta-llama/llama-api-typescript/commit/304abc7e7ef0eb3c3139285a33bb4e427a1b9ca7))
+* **mcp:** return correct lines on typescript errors ([4209666](https://github.com/meta-llama/llama-api-typescript/commit/4209666e6086491e425d5e6d1a7686f381f3228b))
+
+
+### Chores
+
+* **client:** fix logger property type ([f6d258d](https://github.com/meta-llama/llama-api-typescript/commit/f6d258d40311e1e9a86322f09b63662b3ec97589))
+* **internal:** codegen related update ([47cd3b9](https://github.com/meta-llama/llama-api-typescript/commit/47cd3b9868b89871017a9da05740f47de1528b40))
+* **internal:** codegen related update ([264d35f](https://github.com/meta-llama/llama-api-typescript/commit/264d35f4b4035b554c6d021aa4a9e8cad88b6a54))
+* **internal:** upgrade eslint ([6c36ae4](https://github.com/meta-llama/llama-api-typescript/commit/6c36ae41bfe7a9e498f81c7b4d539ec6e84763f7))
+* **internal:** use npm pack for build uploads ([f82fb97](https://github.com/meta-llama/llama-api-typescript/commit/f82fb9739fa19f31a1caf7209b7c17d726799f4d))
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([5e80fb3](https://github.com/meta-llama/llama-api-typescript/commit/5e80fb3d9d408d750b4d2fc0e0b288b62e6e451c))
+
 ## 0.3.0 (2025-10-01)
 
 Full Changelog: [v0.2.3...v0.3.0](https://github.com/meta-llama/llama-api-typescript/compare/v0.2.3...v0.3.0)
