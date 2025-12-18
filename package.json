@@ -1,6 +1,6 @@
 {
   "name": "llama-api-client",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "The official TypeScript library for the Llama API Client API",
   "author": "Llama API Client <support@llama.developer.meta.com>",
   "types": "dist/index.d.ts",
@@ -35,7 +35,7 @@
     "@types/node": "^20.17.6",
     "@typescript-eslint/eslint-plugin": "8.31.1",
     "@typescript-eslint/parser": "8.31.1",
-    "eslint": "^9.20.1",
+    "eslint": "^9.39.1",
     "eslint-plugin-prettier": "^5.4.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "iconv-lite": "^0.6.3",
