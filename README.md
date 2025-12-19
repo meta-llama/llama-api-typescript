@@ -34,28 +34,6 @@ const createChatCompletionResponse = await client.chat.completions.create({
 console.log(createChatCompletionResponse.id);
 ```
 
-## Streaming responses
-
-We provide support for streaming responses using Server Sent Events (SSE).
-
-```ts
-import LlamaAPIClient from 'llama-api-client';
-
-const client = new LlamaAPIClient();
-
-const stream = await client.chat.completions.create({
-  messages: [{ content: 'string', role: 'user' }],
-  model: 'model',
-  stream: true,
-});
-for await (const createChatCompletionResponseStreamChunk of stream) {
-  console.log(createChatCompletionResponseStreamChunk.id);
-}
-```
-
-If you need to cancel a stream, you can `break` from the loop
-or call `stream.controller.abort()`.
-
 ### Request & Response types
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
