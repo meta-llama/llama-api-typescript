@@ -193,7 +193,7 @@ export interface UploadCreateParams {
     | 'metadata';
 
   /**
-   * Header param:
+   * Header param
    */
   'X-API-Version'?: '1.0.0';
 }
@@ -209,7 +209,7 @@ export interface UploadPartParams {
   data: Uploadable;
 
   /**
-   * Header param:
+   * Header param
    */
   'X-API-Version'?: '1.0.0';
 
