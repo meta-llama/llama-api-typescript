@@ -60,7 +60,7 @@ $ yarn link llama-api-client
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global llama-api-client
+$ pnpm link --global llama-api-client
 ```
 
 ## Running tests
