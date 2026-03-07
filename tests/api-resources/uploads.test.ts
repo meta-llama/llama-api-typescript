@@ -59,7 +59,7 @@ describe('resource uploads', () => {
   // Mock server tests are disabled
   test.skip('part: only required params', async () => {
     const responsePromise = client.uploads.part('upload_id', {
-      data: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      data: await toFile(Buffer.from('Example data'), 'README.md'),
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -73,7 +73,7 @@ describe('resource uploads', () => {
   // Mock server tests are disabled
   test.skip('part: required and optional params', async () => {
     const response = await client.uploads.part('upload_id', {
-      data: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      data: await toFile(Buffer.from('Example data'), 'README.md'),
       'X-API-Version': '1.0.0',
       'X-Upload-Offset': 0,
     });
