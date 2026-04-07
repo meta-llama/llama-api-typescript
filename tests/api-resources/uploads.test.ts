@@ -8,8 +8,7 @@ const client = new LlamaAPIClient({
 });
 
 describe('resource uploads', () => {
-  // Prism tests are disabled
-  test.skip('create: only required params', async () => {
+  test('create: only required params', async () => {
     const responsePromise = client.uploads.create({
       bytes: 0,
       filename: 'filename',
@@ -25,8 +24,7 @@ describe('resource uploads', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
-  test.skip('create: required and optional params', async () => {
+  test('create: required and optional params', async () => {
     const response = await client.uploads.create({
       bytes: 0,
       filename: 'filename',
@@ -36,8 +34,7 @@ describe('resource uploads', () => {
     });
   });
 
-  // Prism tests are disabled
-  test.skip('get', async () => {
+  test('get', async () => {
     const responsePromise = client.uploads.get('upload_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -48,16 +45,14 @@ describe('resource uploads', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
-  test.skip('get: request options and params are passed correctly', async () => {
+  test('get: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.uploads.get('upload_id', { 'X-API-Version': '1.0.0' }, { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(LlamaAPIClient.NotFoundError);
   });
 
-  // Prism tests are disabled
-  test.skip('part: only required params', async () => {
+  test('part: only required params', async () => {
     const responsePromise = client.uploads.part('upload_id', {
       data: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
@@ -70,8 +65,7 @@ describe('resource uploads', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
-  test.skip('part: required and optional params', async () => {
+  test('part: required and optional params', async () => {
     const response = await client.uploads.part('upload_id', {
       data: await toFile(Buffer.from('# my file contents'), 'README.md'),
       'X-API-Version': '1.0.0',
