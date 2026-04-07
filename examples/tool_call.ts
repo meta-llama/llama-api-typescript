@@ -53,7 +53,10 @@ async function run_streaming(): Promise<void> {
   });
 
   let stopReason: string = 'stop';
-  let toolCall: any = { function: { arguments: '' } };
+  let toolCall: { id: string; function: { name: string; arguments: string } } = {
+    id: '',
+    function: { name: '', arguments: '' },
+  };
 
   for await (const chunk of response) {
     if (chunk.event.delta.type === 'tool_call' && chunk.event.delta.id) {
