@@ -56,7 +56,7 @@ export interface CompletionCreateParamsBase {
   max_completion_tokens?: number;
 
   /**
-   * Controls the likelyhood and generating repetitive responses.
+   * Controls the likelihood of generating repetitive responses.
    */
   repetition_penalty?: number;
 

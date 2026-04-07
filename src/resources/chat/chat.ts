@@ -30,7 +30,7 @@ export interface CompletionMessage {
   /**
    * The reason why we stopped. Options are: - "stop": The model reached a natural
    * stopping point. - "tool_calls": The model finished generating and invoked a tool
-   * call. - "length": The model reached the maxinum number of tokens specified in
+   * call. - "length": The model reached the maximum number of tokens specified in
    * the request.
    */
   stop_reason?: 'stop' | 'tool_calls' | 'length';
@@ -138,7 +138,7 @@ export namespace CreateChatCompletionResponseStreamChunk {
     /**
      * The reason why we stopped. Options are: - "stop": The model reached a natural
      * stopping point. - "tool_calls": The model finished generating and invoked a tool
-     * call. - "length": The model reached the maxinum number of tokens specified in
+     * call. - "length": The model reached the maximum number of tokens specified in
      * the request.
      */
     stop_reason?: 'stop' | 'tool_calls' | 'length';
