@@ -8,8 +8,7 @@ const client = new LlamaAPIClient({
 });
 
 describe('resource completions', () => {
-  // Prism tests are disabled
-  test.skip('create: only required params', async () => {
+  test('create: only required params', async () => {
     const responsePromise = client.chat.completions.create({
       messages: [{ content: 'string', role: 'user' }],
       model: 'model',
@@ -23,14 +22,12 @@ describe('resource completions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
-  test.skip('create: required and optional params', async () => {
+  test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
       messages: [{ content: 'string', role: 'user' }],
       model: 'model',
       max_completion_tokens: 1,
       repetition_penalty: 1,
-      response_format: { json_schema: { name: 'name', schema: {} }, type: 'json_schema' },
       stream: false,
       temperature: 0,
       tool_choice: 'none',
