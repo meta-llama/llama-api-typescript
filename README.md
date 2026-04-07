@@ -385,8 +385,6 @@ const client = new LlamaAPIClient({
 });
 ```
 
-## Frequently Asked Questions
-
 ## Semantic versioning
 
 This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
