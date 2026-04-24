@@ -43,6 +43,6 @@ export interface ModerationCreateParams {
 export declare namespace Moderations {
   export {
     type ModerationCreateResponse as ModerationCreateResponse,
-    type ModerationCreateParams as ModerationCreateParams,
+    type ModerationCreateParams as ModerationCreateParams
   };
 }

@@ -11,33 +11,15 @@ export class Completions extends APIResource {
   /**
    * Generate a chat completion for the given messages using the specified model.
    */
-  create(
-    body: CompletionCreateParamsNonStreaming,
-    options?: RequestOptions,
-  ): APIPromise<ChatAPI.CreateChatCompletionResponse>;
-  create(
-    body: CompletionCreateParamsStreaming,
-    options?: RequestOptions,
-  ): APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>>;
-  create(
-    body: CompletionCreateParamsBase,
-    options?: RequestOptions,
-  ): APIPromise<
-    Stream<ChatAPI.CreateChatCompletionResponseStreamChunk> | ChatAPI.CreateChatCompletionResponse
-  >;
-  create(
-    body: CompletionCreateParams,
-    options?: RequestOptions,
-  ):
-    | APIPromise<ChatAPI.CreateChatCompletionResponse>
-    | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>> {
-    return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as
-      | APIPromise<ChatAPI.CreateChatCompletionResponse>
-      | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>>;
+  create(body: CompletionCreateParamsNonStreaming, options?: RequestOptions): APIPromise<ChatAPI.CreateChatCompletionResponse>
+  create(body: CompletionCreateParamsStreaming, options?: RequestOptions): APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>>
+  create(body: CompletionCreateParamsBase, options?: RequestOptions): APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk> | ChatAPI.CreateChatCompletionResponse>
+  create(body: CompletionCreateParams, options?: RequestOptions): APIPromise<ChatAPI.CreateChatCompletionResponse> | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>> {
+    return this._client.post('/chat/completions', { body, ...options, stream: body.stream ?? false }) as APIPromise<ChatAPI.CreateChatCompletionResponse> | APIPromise<Stream<ChatAPI.CreateChatCompletionResponseStreamChunk>>;
   }
 }
 
-export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming;
+export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming
 
 export interface CompletionCreateParamsBase {
   /**
@@ -67,9 +49,7 @@ export interface CompletionCreateParamsBase {
    * the default is {"type": "text"}, and model will return a free-form text
    * response.
    */
-  response_format?:
-    | CompletionCreateParams.JsonSchemaResponseFormat
-    | CompletionCreateParams.TextResponseFormat;
+  response_format?: CompletionCreateParams.JsonSchemaResponseFormat | CompletionCreateParams.TextResponseFormat;
 
   /**
    * If True, generate an SSE event stream of the response. Defaults to False.
@@ -224,8 +204,8 @@ export namespace CompletionCreateParams {
     }
   }
 
-  export type CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming;
-  export type CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming;
+  export type CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming
+  export type CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming
 }
 
 export interface CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase {
@@ -246,6 +226,6 @@ export declare namespace Completions {
   export {
     type CompletionCreateParams as CompletionCreateParams,
     type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
-    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
+    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming
   };
 }

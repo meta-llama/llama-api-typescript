@@ -13,59 +13,24 @@ export class Uploads extends APIResource {
    * Initiate an upload session with specified file metadata
    */
   create(params: UploadCreateParams, options?: RequestOptions): APIPromise<UploadCreateResponse> {
-    const { 'X-API-Version': xAPIVersion, ...body } = params;
-    return this._client.post('/uploads', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xAPIVersion?.toString() != null ? { 'X-API-Version': xAPIVersion?.toString() } : undefined) },
-        options?.headers,
-      ]),
-    });
+    const { 'X-API-Version': xAPIVersion, ...body } = params
+    return this._client.post('/uploads', { body, ...options, headers: buildHeaders([{...(xAPIVersion?.toString() != null ? { 'X-API-Version': xAPIVersion?.toString() } : undefined)}, options?.headers]) });
   }
 
   /**
    * Get the status of the given upload session
    */
-  get(
-    uploadID: string,
-    params: UploadGetParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<UploadGetResponse> {
-    const { 'X-API-Version': xAPIVersion } = params ?? {};
-    return this._client.get(path`/uploads/${uploadID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xAPIVersion?.toString() != null ? { 'X-API-Version': xAPIVersion?.toString() } : undefined) },
-        options?.headers,
-      ]),
-    });
+  get(uploadID: string, params: UploadGetParams | null | undefined = {}, options?: RequestOptions): APIPromise<UploadGetResponse> {
+    const { 'X-API-Version': xAPIVersion } = params ?? {}
+    return this._client.get(path`/uploads/${uploadID}`, { ...options, headers: buildHeaders([{...(xAPIVersion?.toString() != null ? { 'X-API-Version': xAPIVersion?.toString() } : undefined)}, options?.headers]) });
   }
 
   /**
    * Upload a chunk of bytes to the upload session
    */
   part(uploadID: string, params: UploadPartParams, options?: RequestOptions): APIPromise<UploadPartResponse> {
-    const { 'X-API-Version': xAPIVersion, 'X-Upload-Offset': xUploadOffset, ...body } = params;
-    return this._client.post(
-      path`/uploads/${uploadID}`,
-      multipartFormRequestOptions(
-        {
-          body,
-          ...options,
-          headers: buildHeaders([
-            {
-              ...(xAPIVersion?.toString() != null ? { 'X-API-Version': xAPIVersion?.toString() } : undefined),
-              ...(xUploadOffset?.toString() != null ?
-                { 'X-Upload-Offset': xUploadOffset?.toString() }
-              : undefined),
-            },
-            options?.headers,
-          ]),
-        },
-        this._client,
-      ),
-    );
+    const { 'X-API-Version': xAPIVersion, 'X-Upload-Offset': xUploadOffset, ...body } = params
+    return this._client.post(path`/uploads/${uploadID}`, multipartFormRequestOptions({ body, ...options, headers: buildHeaders([{...(xAPIVersion?.toString() != null ? { 'X-API-Version': xAPIVersion?.toString() } : undefined), ...(xUploadOffset?.toString() != null ? { 'X-Upload-Offset': xUploadOffset?.toString() } : undefined)}, options?.headers]) }, this._client));
   }
 }
 
@@ -89,33 +54,12 @@ export interface UploadCreateResponse {
    * The MIME type of the file. Must be one of the supported MIME type for the given
    * purpose.
    */
-  mime_type:
-    | 'image/jpeg'
-    | 'image/jpg'
-    | 'image/png'
-    | 'image/gif'
-    | 'image/webp'
-    | 'image/x-icon'
-    | 'audio/mp3'
-    | 'audio/mpeg'
-    | 'audio/wav'
-    | 'audio/x-wav'
-    | 'application/jsonl'
-    | 'application/json'
-    | 'text/plain'
-    | 'video/mp4'
-    | 'application/pdf';
+  mime_type: 'image/jpeg' | 'image/jpg' | 'image/png' | 'image/gif' | 'image/webp' | 'image/x-icon' | 'audio/mp3' | 'audio/mpeg' | 'audio/wav' | 'audio/x-wav' | 'application/jsonl' | 'application/json' | 'text/plain' | 'video/mp4' | 'application/pdf';
 
   /**
    * Intended purpose of the uploaded file.
    */
-  purpose:
-    | 'attachment'
-    | 'ephemeral_attachment'
-    | 'image_generation_result'
-    | 'messages_finetune'
-    | 'messages_eval'
-    | 'metadata';
+  purpose: 'attachment' | 'ephemeral_attachment' | 'image_generation_result' | 'messages_finetune' | 'messages_eval' | 'metadata';
 }
 
 export interface UploadGetResponse {
@@ -164,33 +108,12 @@ export interface UploadCreateParams {
    * Body param: The MIME type of the file. Must be one of the supported MIME type
    * for the given purpose.
    */
-  mime_type:
-    | 'image/jpeg'
-    | 'image/jpg'
-    | 'image/png'
-    | 'image/gif'
-    | 'image/webp'
-    | 'image/x-icon'
-    | 'audio/mp3'
-    | 'audio/mpeg'
-    | 'audio/wav'
-    | 'audio/x-wav'
-    | 'application/jsonl'
-    | 'application/json'
-    | 'text/plain'
-    | 'video/mp4'
-    | 'application/pdf';
+  mime_type: 'image/jpeg' | 'image/jpg' | 'image/png' | 'image/gif' | 'image/webp' | 'image/x-icon' | 'audio/mp3' | 'audio/mpeg' | 'audio/wav' | 'audio/x-wav' | 'application/jsonl' | 'application/json' | 'text/plain' | 'video/mp4' | 'application/pdf';
 
   /**
    * Body param: Intended purpose of the uploaded file.
    */
-  purpose:
-    | 'attachment'
-    | 'ephemeral_attachment'
-    | 'image_generation_result'
-    | 'messages_finetune'
-    | 'messages_eval'
-    | 'metadata';
+  purpose: 'attachment' | 'ephemeral_attachment' | 'image_generation_result' | 'messages_finetune' | 'messages_eval' | 'metadata';
 
   /**
    * Header param
@@ -226,6 +149,6 @@ export declare namespace Uploads {
     type UploadPartResponse as UploadPartResponse,
     type UploadCreateParams as UploadCreateParams,
     type UploadGetParams as UploadGetParams,
-    type UploadPartParams as UploadPartParams,
+    type UploadPartParams as UploadPartParams
   };
 }

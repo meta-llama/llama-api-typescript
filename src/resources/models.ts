@@ -15,9 +15,7 @@ export class Models extends APIResource {
    * one.
    */
   list(options?: RequestOptions): APIPromise<ModelListResponse> {
-    return (this._client.get('/models', options) as APIPromise<{ data: ModelListResponse }>)._thenUnwrap(
-      (obj) => obj.data,
-    );
+    return (this._client.get('/models', options) as APIPromise<{ data: ModelListResponse }>)._thenUnwrap((obj) => obj.data);
   }
 }
 
@@ -43,8 +41,11 @@ export interface LlamaModel {
   owned_by: string;
 }
 
-export type ModelListResponse = Array<LlamaModel>;
+export type ModelListResponse = Array<LlamaModel>
 
 export declare namespace Models {
-  export { type LlamaModel as LlamaModel, type ModelListResponse as ModelListResponse };
+  export {
+    type LlamaModel as LlamaModel,
+    type ModelListResponse as ModelListResponse
+  };
 }

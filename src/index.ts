@@ -5,18 +5,4 @@ export { LlamaAPIClient as default } from './client';
 export { type Uploadable, toFile } from './core/uploads';
 export { APIPromise } from './core/api-promise';
 export { LlamaAPIClient, type ClientOptions } from './client';
-export {
-  LlamaAPIClientError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './core/error';
+export { LlamaAPIClientError, APIError, APIConnectionError, APIConnectionTimeoutError, APIUserAbortError, NotFoundError, ConflictError, RateLimitError, BadRequestError, AuthenticationError, InternalServerError, PermissionDeniedError, UnprocessableEntityError } from './core/error';
