@@ -2,7 +2,12 @@
 
 import { APIResource } from '../../core/resource';
 import * as CompletionsAPI from './completions';
-import { CompletionCreateParams, CompletionCreateParamsNonStreaming, CompletionCreateParamsStreaming, Completions } from './completions';
+import {
+  CompletionCreateParams,
+  CompletionCreateParamsNonStreaming,
+  CompletionCreateParamsStreaming,
+  Completions,
+} from './completions';
 
 export class Chat extends APIResource {
   completions: CompletionsAPI.Completions = new CompletionsAPI.Completions(this._client);
@@ -187,7 +192,7 @@ export namespace CreateChatCompletionResponseStreamChunk {
 /**
  * A message from the user in a chat conversation.
  */
-export type Message = UserMessage | SystemMessage | ToolResponseMessage | CompletionMessage
+export type Message = UserMessage | SystemMessage | ToolResponseMessage | CompletionMessage;
 
 /**
  * A image content item
@@ -293,13 +298,13 @@ export declare namespace Chat {
     type MessageTextContentItem as MessageTextContentItem,
     type SystemMessage as SystemMessage,
     type ToolResponseMessage as ToolResponseMessage,
-    type UserMessage as UserMessage
+    type UserMessage as UserMessage,
   };
 
   export {
     Completions as Completions,
     type CompletionCreateParams as CompletionCreateParams,
     type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
-    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming
+    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
   };
 }
