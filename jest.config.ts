@@ -8,6 +8,7 @@ const config: JestConfigWithTsJest = {
   },
   moduleNameMapper: {
     '^llama-api-client$': '<rootDir>/src/index.ts',
+    '^llama-api-client/ai$': '<rootDir>/src/ai.ts',
     '^llama-api-client/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
