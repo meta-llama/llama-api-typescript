@@ -56,7 +56,30 @@ for await (const createChatCompletionResponseStreamChunk of stream) {
 If you need to cancel a stream, you can `break` from the loop
 or call `stream.controller.abort()`.
 
-### Request & Response types
+## Vercel AI SDK (`ai`)
+
+[Vercel `ai`](https://www.npmjs.com/package/ai) (v6) can call Llama through the optional **`llama-api-client/ai`** subpath. That adapter implements the AI SDK `LanguageModelV3` surface on top of `LlamaAPIClient`, routing structured outputs like `generateObject` to Llama-native `response_format: { type: 'json_schema', ... }`.
+
+```sh
+npm install llama-api-client ai @ai-sdk/provider zod
+```
+
+Peer semver is declared on the package (`ai` ^6, `@ai-sdk/provider` ^3; `ai` additionally peers `zod`).
+
+```ts
+import { generateText } from 'ai';
+import { createLlama } from 'llama-api-client/ai';
+
+const llama = createLlama();
+await generateText({
+  model: llama('Llama-4-Maverick-17B-128E-Instruct-FP8'),
+  prompt: 'Hello!',
+});
+```
+
+See [`examples/vercel-ai.ts`](examples/vercel-ai.ts) for streaming and structured object generation.
+
+## Request & Response types
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
 

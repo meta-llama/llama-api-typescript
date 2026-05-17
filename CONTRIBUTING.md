@@ -68,8 +68,10 @@ $ pnpm link -—global llama-api-client
 Most tests require you to [set up a mock server](https://github.com/stoplightio/prism) against the OpenAPI spec to run the tests.
 
 ```sh
-$ npx prism mock path/to/your/openapi.yml
+$ npx @stoplight/prism-cli mock https://storage.googleapis.com/stainless-sdk-openapi-specs/meta%2Fllama-api-edf0a308dd29bea2feb29f2e7f04eec4dbfb130ffe52511641783958168f60a4.yml
 ```
+
+You can also pass a local OpenAPI YAML/JSON path instead of the URL. The canonical spec URL is recorded in [.stats.yml](.stats.yml) as `openapi_spec_url`.
 
 ```sh
 $ yarn run test
