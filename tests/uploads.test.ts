@@ -1,7 +1,6 @@
 import fs from 'fs';
 import type { ResponseLike } from 'llama-api-client/internal/to-file';
 import { toFile } from 'llama-api-client/core/uploads';
-import { File } from 'node:buffer';
 
 class MyClass {
   name: string = 'foo';
